@@ -1,16 +1,15 @@
-var createError = require('http-errors');
-var express = require('express');
-var logger = require('morgan');
-var mongoose = require('mongoose');
-var favicon = require('serve-favicon');
-var session = require('express-session');
-var path = require('path');
-var okta = require('@okta/okta-sdk-nodejs');
-var ExpressOIDC = require('@okta/oidc-middleware').ExpressOIDC;
+const createError = require('http-errors');
+const express = require('express');
+const logger = require('morgan');
+const mongoose = require('mongoose');
+const favicon = require('serve-favicon');
+const session = require('express-session');
+const path = require('path');
 
-var orgUrl = 'https://dev-18496280.okta.com'; //save for later
-var clientID = '0oaa00qfcZG25RQ225d6';
-var apiToken = '00W2yWrfc3kfSQ8dBzr79tW7N8bWV1Aqm_19zHu_eC';
+
+// var orgUrl = 'https://dev-18496280.okta.com'; //save for later
+// var clientID = '0oaa00qfcZG25RQ225d6';
+// var apiToken = ;
 
 //db object setup
 mongoose.set('debug', true);
@@ -24,6 +23,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 //Setting up routers
 const dashboardRouter = require('./routes/dashboard');
 const publicRouter = require('./routes/public');
+const usersRouter = require('./routes/users');
 
 
 //App obj init
@@ -39,15 +39,25 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({
-	secret: 'sausage-slaps',
-	resave: true,
-	saveUninititalized: false
-}));
+
+app.use((req, res, next) => {
+	if(!req.userContext) {
+		return next();
+	}
+	oktaClient.getUser(req.userContext.userinfo.sub)
+	.then(user => {
+		req.user = user;
+		req.locals.user = user;
+		next();
+	}).catch(err => {
+		next(err);
+	});
+});
 
 //Set up middleware for routing after other middleware
 app.use('/', publicRouter);
 app.use('/dashboard', dashboardRouter);
+app.use('/users', usersRouter);
 
 //Catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -64,5 +74,7 @@ app.use(function(err, req, res, next) {
 	res.status(err.status || 500);
 	res.render('error');
 });
+
+
 
 module.exports = app;
