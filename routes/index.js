@@ -3,7 +3,7 @@ const router = express.Router();
 
 //Render dashboard 
 router.get('/', (req, res) => {
-	res.render('dashboard');
+	res.render('index');
 });
 
 module.exports = router;
