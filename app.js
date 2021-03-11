@@ -5,6 +5,9 @@ const mongoose = require('mongoose');
 const favicon = require('serve-favicon');
 const session = require('express-session');
 const path = require('path');
+const crypto = require('crypto');
+const bp = require('body-parser');
+const cookie = require('cookie-parser');
 
 
 // var orgUrl = 'https://dev-18496280.okta.com'; //save for later
@@ -39,20 +42,6 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use((req, res, next) => {
-	if(!req.userContext) {
-		return next();
-	}
-	oktaClient.getUser(req.userContext.userinfo.sub)
-	.then(user => {
-		req.user = user;
-		req.locals.user = user;
-		next();
-	}).catch(err => {
-		next(err);
-	});
-});
 
 //Set up middleware for routing after other middleware
 app.use('/', publicRouter);
