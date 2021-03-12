@@ -1,18 +1,20 @@
 const mongoose = require('mongoose');
-const User = require('../models/userModel');
 const Schema = mongoose.Schema;
+const passportLocalMongoose = require('passport-local-mongoose');
 
-const userSchema = new Schema({
-	username: String,
-	password: String
+const User = new Schema({
+	username: {type: String, required: true, maxlength: 20},
+	password: {type: String, required: true}
 });
 
 User
-	.virtual('getName')
+	.virtual('getUserName')
 	.get(() => {
 		return this.username;
 	})
-//load mongoose plugin(s)
-userDetail.plugin(passportLocalMongoose);
 
-module.exports = mongoose.model('btm', userSchema, 'users');
+//load mongoose plugin(s)
+User
+	.plugin(passportLocalMongoose);
+
+module.exports = mongoose.model('users', User);

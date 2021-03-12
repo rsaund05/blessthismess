@@ -13,7 +13,6 @@ const crypto = require('crypto');
 const bodyParser = require('body-parser');
 const cookie = require('cookie-parser');
 const passport = require('passport');
-const passportLocalMongoose = require('passport-local-mongoose');
 const schema = mongoose.Schema;
 
 
@@ -31,7 +30,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 
 //Setting up routers
-const dashboardRouter = require('./routes/dashboard');
+const indexRouter = require('./routes/index');
 const publicRouter = require('./routes/public');
 const usersRouter = require('./routes/users');
 
@@ -54,8 +53,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //Set up middleware for routing after other middleware
-app.use('/', publicRouter);
-app.use('/dashboard', dashboardRouter);
+app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 //Catch 404 and forward to error handler
