@@ -19,11 +19,11 @@ html
       nav.my-2.my-md-0.mr-md-3
         a.p-2.text-dark(href="/", title="Home") Home
 
-        if user == undefined
-          a.p-2.text-dark(href="/users/login") Log In / Register
-        else
-          a.p-2.text-dark(href="/dashboard") Dashboard
-          a.p-2.text-dark(href="/users/logout") Logout
+        //if user == undefined
+        a.p-2.text-dark(href="/login") Log In / Register
+        //else
+          //a.p-2.text-dark(href="/dashboard") Dashboard
+          //a.p-2.text-dark(href="/users/logout") Logout
     .container
       block content
 

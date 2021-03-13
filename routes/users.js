@@ -3,8 +3,6 @@ const userController = require('../controllers/userController');
 const connectEnsureLogin = require('connect-ensure-login');
 const router = express.Router();
 
-router.post('/')
-
 router.get('/logout', (req, res) => {
 	req.logout();
 	res.redirect('/');
