@@ -4,7 +4,7 @@ const userController = require('../controllers/userController');
 
 //Render dashboard 
 router.get('/', (req, res) => {
-	res.render('index');
+	res.render('index', {title: 'Blessthismess - Home'});
 });
 
 router.get('/login', userController.loginPage);

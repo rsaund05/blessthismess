@@ -9,5 +9,5 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 exports.loginPage = (req, res, next) => {
-    res.render('loginPage');
+    res.render('loginPage', {title: 'Blessthismess - Login'});
 }
