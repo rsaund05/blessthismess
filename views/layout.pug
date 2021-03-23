@@ -12,17 +12,20 @@ html
     script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js", integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV", crossorigin="anonymous")
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    div.top-bar.d-flex.flex-column.flex-md-row.align-items-center.p-3.px-md-4.mb-3.bg-white.border-bottom.box-shadow
-      h5.my-0.mr-md-auto.font-weight-normal #{title}
-        //img(src="/images/favicon.ico")
-      nav.my-2.my-md-0.mr-md-3
-        a.p-2.text-dark(href="/", title="Home") Home
-
-        //if user == undefined
-        a.p-2.text-dark(href="/login") Log In / Register
-        //else
-          //a.p-2.text-dark(href="/dashboard") Dashboard
-          //a.p-2.text-dark(href="/users/logout") Logout
+    nav.navbar.navbar-expand-lg.navbar-light.navbar-custom.rounded.fixed-top.default-shadow
+      img(src='/images/favicon.ico')
+      a.navbar-brand(style='padding-left: 10px') #{title}
+      button.navbar-toggler(type='button' data-toggle='collapse' data-target='.navbar-collapse' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      .collapse.navbar-collapse(id='navbarSupportedContent')
+        ul.navbar-nav.mr-auto 
+          li.nav-item
+            a.nav-link(href='/') Home
+          li.nav-item
+            a.nav-link(href='/dashboard') Dashboard 
+        ul.nav.navbar-nav.ml-auto   
+          a.nav-link(href='/login') Login / Register 
+          a.nav-link(href='/about') About       
     .container
       block content
 

@@ -1,11 +1,18 @@
 extends layout
 
 block content
-    div.container-fluid
-        h1.navbar-header Login to BlessThisMess
-        p username
-        input(type='textbox' name='userField')
-        p password
-        input(type='password' name='passField')
-        p 
-        input(type='submit' name='submitLogin' value='Login')
+    div.form-div.default-shadow(style='background-color: #e8eaff;')
+        h5 Login to BlessThisMess
+        form.form-signin(action='/login' method='POST')
+            p Username/email
+            input.form-control.form-rounded.form-control-sm(type='text' name='userField' placeholder='Enter username/email')
+            p Password
+            input.form-control.form-rounded.form-control-sm(type='password' name='passFeld' placeholder='Enter password')
+            br 
+            input.btn.btn-primary.button-shadow(type='submit' name='submitLogin' value='Login')
+
+
+    div.form-div
+        hr
+        h6 Not registered? Click/Tap here to create a BlessThisMess account!    
+        button.btn.btn-warning.button-shadow(type='button' name='createAcct') Register New User 

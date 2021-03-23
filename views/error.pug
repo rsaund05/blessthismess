@@ -1,6 +1,11 @@
 extends layout
 
 block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+  h1 Oh dang!
+  p Looks like we've encountered an error with your request. Sorry about that!
+  hr
+  p Details for nerds:
+  h6.bolded= error.status
+  h6.bolded= message
+
+  pre.error-style #{error.stack}

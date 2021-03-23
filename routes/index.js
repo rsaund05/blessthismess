@@ -7,6 +7,9 @@ router.get('/', (req, res) => {
 	res.render('index', {title: 'Blessthismess - Home'});
 });
 
+router.get('/about', (req, res) => {
+	res.render('about', {title: 'Blessthismess - About'})
+});
 router.get('/login', userController.loginPage);
 
 module.exports = router;

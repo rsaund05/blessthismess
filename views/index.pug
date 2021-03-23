@@ -2,9 +2,10 @@ extends layout
 
 block content
   h2.text-center BlessThisMess
-
-  .row
-    .offset-sm-2.col-sm-8
-      .jumbotron.text-center.
-        Welcome to the BlessThisMess Home organization web app! #[strong The app is currently under construction!] Please visit the
-        #[a(href="https://github.com/rsaund05/blessthismess", title="BlessThisMess on GitHub") BlessThisMess GitHub page] to learn more.
+  div.index-div
+    p Welcome to the BlessThisMess Home organization web app! 
+    p #[strong The app is currently under construction!] Please visit the
+    p #[a(href="https://github.com/rsaund05/blessthismess", title="BlessThisMess on GitHub") BlessThisMess GitHub page] to learn more.
+  div.etc-div
+    br
+    a.btn.btn-primary.button-shadow(href='/login') Login to BlessThisMess
