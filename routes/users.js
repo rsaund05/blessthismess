@@ -7,4 +7,13 @@ router.get('/logout', (req, res) => {
 	res.redirect('/');
 });
 
+
+
+router.post('/register', (req, res) => {
+
+});
+
+router.post('/login', (req, res) => {
+
+});
 module.exports = router;
