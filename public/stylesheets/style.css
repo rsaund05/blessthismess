@@ -10,9 +10,6 @@ a {
   font-size: 10px;
 }
 
-.centred {
-  text-align: center;
-}
 .navbar-custom {
   background-color: #ad5353;
   border: 10;
@@ -32,8 +29,6 @@ a {
   margin: auto;
   width: 50%;
 }
-
-
 
 .default-shadow {
   border: 1px;

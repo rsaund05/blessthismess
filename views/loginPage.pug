@@ -3,16 +3,21 @@ extends layout
 block content
     div.form-div.default-shadow(style='background-color: #e8eaff;')
         h5 Login to BlessThisMess
-        form.form-signin(action='' method='POST')
+        form.form-signin(action='/login' method='POST')
             p Username/email
             input.form-control.form-rounded.form-control-sm(type='text' name='userField' placeholder='Enter username/email')
             p Password
             input.form-control.form-rounded.form-control-sm(type='password' name='passFeld' placeholder='Enter password')
+<<<<<<< HEAD
             button.btn.btn-primary(type='button' value='fuck')
             
+=======
+            br 
+            input.btn.btn-primary.button-shadow(type='submit' name='submitLogin' value='Login')
+>>>>>>> parent of 2d26ae5 (...)
 
 
-    div.form-div.centred
+    div.form-div
         hr
         h6 Not registered? Click/Tap here to create a BlessThisMess account!    
-        a.btn.btn-warning.button-shadow(type='button' name='createAcct' href='/') Register New User 
+        button.btn.btn-warning.button-shadow(type='button' name='createAcct') Register New User 
