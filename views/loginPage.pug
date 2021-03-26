@@ -3,7 +3,7 @@ extends layout
 block content
     div.form-div.default-shadow(style='background-color: #e8eaff;')
         h5 Login to BlessThisMess
-        form.form-signin(action='/login' method='POST')
+        form.form-signin(action='/users/login' method='POST')
             | Email
             input.form-control.form-rounded.form-control-sm(type='email' name='emailField' placeholder='Enter email')
             | Password

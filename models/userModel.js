@@ -9,12 +9,6 @@ const User = new Schema({
 	dateAded: {type: Date, default: Date.now}
 });
 
-User
-	.virtual('getUserName')
-	.get(() => {
-		return this.username;
-	})
-
 //load mongoose plugin(s)
 User
 	.plugin(passportLocalMongoose);
