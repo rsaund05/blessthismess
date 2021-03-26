@@ -5,7 +5,8 @@ const passportLocalMongoose = require('passport-local-mongoose');
 const User = new Schema({
 	username: {type: String, required: true, maxlength: 20},
 	email: {type: String, required: true, maxlength: 30},
-	password: {type: String, required: true}
+	password: {type: String, required: true},
+	dateAded: {type: Date, default: Date.now}
 });
 
 User
