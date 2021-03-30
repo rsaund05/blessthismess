@@ -22,12 +22,14 @@ html
           li.nav-item
             a.nav-link(href='/') Home
           li.nav-item
-            a.nav-link(href='/dashboard') Dashboard 
+            a.nav-link(href='/:id/dashboard') Dashboard 
         ul.nav.navbar-nav.ml-auto   
-          a.nav-link(href='/login') Login / Register 
+          a.nav-link(href='/users/login') Login / Register 
           a.nav-link(href='/about') About       
     .container
       block content
 
     footer.
-      Built with #[a(href="https://nodejs.dev") Node.js] and #[a(href="https://expressjs.com/") Express.js]. Created by Robert Saunders, 2021
+      Built with #[a(href="https://nodejs.dev") Node.js] and #[a(href="https://expressjs.com/") Express.js].
+       
+      Created by Robert Saunders, 2021
