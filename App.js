@@ -1,13 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer, StackActions } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Dashboard from './src/screens/Dashboard';
 
-export default function App() {
+const Stack = createNativeStackNavigator();
+
+const App = () => {
   return (
-	<View style={styles.container}>
-		<Text>Sausage slaps</Text>
-		<StatusBar style="auto" />
-	</View>
+	<NavigationContainer>
+		<Stack.Navigator>
+			<Stack.Screen
+				name="Dashboard"
+				component={Dashboard}
+			/>
+		</Stack.Navigator>
+	</NavigationContainer>
   );
 }
 
@@ -19,3 +28,5 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
   	},
 });
+
+export default App;
