@@ -1,23 +1,102 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { NavigationContainer, StackActions } from '@react-navigation/native';
+import { NavigationContainer, StackActions, TabActions } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Dashboard from './src/screens/Dashboard';
+import Home from './src/screens/Home';
+import Details from './src/screens/Details';
+import Profile from './src/screens/Profile';
+import Settings from './src/screens/Settings';
 
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
-const App = () => {
-  return (
-	<NavigationContainer>
-		<Stack.Navigator>
+function HomeStack() {
+	return (
+		<Stack.Navigator
+			initialRouteName="Home"
+			screenOptions={{
+
+			}}
+		>
 			<Stack.Screen
-				name="Dashboard"
-				component={Dashboard}
+				name="Home"
+				component={Home}
+			/>
+			<Stack.Screen
+				name="Details"
+				component={Details}
+				options={{ title: 'Details Page' }} />
+		</Stack.Navigator>
+	);
+  }
+  
+  function SettingsStack() {
+	return (
+		<Stack.Navigator
+			initialRouteName="Settings"
+			screenOptions={{
+
+			}}
+		>
+			<Stack.Screen
+				name="Settings"
+				component={Settings}
+			/>
+			<Stack.Screen
+				name="Details"
+				component={Details}
+			/>
+			<Stack.Screen
+				name="Profile"
+				component={Profile}
 			/>
 		</Stack.Navigator>
-	</NavigationContainer>
-  );
+	);
+  }
+  
+function App() {
+	return (
+		<NavigationContainer>
+			<Tab.Navigator
+				initialRouteName="Feed"
+				tabBarOptions={{
+				
+			}}>
+				<Tab.Screen
+					name="HomeStack"
+					component={HomeStack}
+					options={{
+						tabBarLabel: 'Home',
+						tabBarIcon: ({ color, size }) => (
+						<MaterialCommunityIcons
+							name="home"
+							color={color}
+							size={size}
+						/>
+						),
+					}}  
+				/>
+				<Tab.Screen
+					name="SettingsStack"
+					component={SettingsStack}
+					options={{
+						tabBarLabel: 'Settings',
+						tabBarIcon: ({ color, size }) => (
+						<MaterialCommunityIcons
+							name="tune"
+							color={color}
+							size={size}
+						/>
+						),
+					}} 
+				/>
+			</Tab.Navigator>
+		</NavigationContainer>
+	);
 }
 
 const styles = StyleSheet.create({
