@@ -68,7 +68,7 @@ const AccountStack = () => {
 
 			}}
 		>
-			<Stack.screen 
+			<Stack.Screen 
 				name="Account"
 				component={Account}
 			/>
@@ -97,6 +97,20 @@ function App() {
 						/>
 						),
 					}}  
+				/>
+				<Tab.Screen 
+					name="AccountStack"
+					component={AccountStack}
+					options={{
+						tabBarLabel: 'Account',
+						tabBarIcon: ({ color, size }) => (
+						<MaterialCommunityIcons
+							name="account-details"
+							color={color}
+							size={size}
+						/>
+						),
+					}}
 				/>
 				<Tab.Screen
 					name="SettingsStack"
