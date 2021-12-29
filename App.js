@@ -10,11 +10,12 @@ import Home from './src/screens/Home';
 import Details from './src/screens/Details';
 import Profile from './src/screens/Profile';
 import Settings from './src/screens/Settings';
+import Account from './src/screens/Account';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-function HomeStack() {
+const HomeStack = () => {
 	return (
 		<Stack.Navigator
 			initialRouteName="Home"
@@ -29,12 +30,13 @@ function HomeStack() {
 			<Stack.Screen
 				name="Details"
 				component={Details}
-				options={{ title: 'Details Page' }} />
+				options={{ title: 'Details Page' }} 
+			/>
 		</Stack.Navigator>
 	);
   }
   
-  function SettingsStack() {
+  const SettingsStack = () => {
 	return (
 		<Stack.Navigator
 			initialRouteName="Settings"
@@ -57,6 +59,22 @@ function HomeStack() {
 		</Stack.Navigator>
 	);
   }
+
+const AccountStack = () => {
+	return (
+		<Stack.Navigator 
+			initialRouteName="Account"
+			screenOptions={{
+
+			}}
+		>
+			<Stack.screen 
+				name="Account"
+				component={Account}
+			/>
+		</Stack.Navigator>
+	);
+}
   
 function App() {
 	return (
