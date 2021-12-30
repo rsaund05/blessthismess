@@ -5,7 +5,7 @@ const Settings = ({ navigation }) => {
     return(
         <SafeAreaView style={{flex: 1}}>
             <View>
-                <Text>Settings Slapper</Text>
+                <Text>SettingsScreen</Text>
             </View>
         </SafeAreaView>
     );

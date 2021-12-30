@@ -5,7 +5,7 @@ const Home = ({ navigation }) => {
     return(
         <SafeAreaView style={{flex: 1}}>
             <View>
-                <Text>HomeSlaps</Text>
+                <Text>HomeScreen</Text>
             </View>
         </SafeAreaView>
     );

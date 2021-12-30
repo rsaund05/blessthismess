@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 const Dashboard = ({ navigaton }) => {
     return(
         <View>
-            <Text>DASHBOARD_TEMP_DELETE</Text>
+            <Text>DashboardScreen</Text>
         </View>
     );
 };

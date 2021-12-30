@@ -5,7 +5,7 @@ const Details = ({ navigation }) => {
     return(
         <SafeAreaView style={{flex: 1}}>
             <View>
-                <Text>DetailSlaps</Text>
+                <Text>DetailsScreen</Text>
             </View>
         </SafeAreaView>
     );
