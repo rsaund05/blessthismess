@@ -21,6 +21,7 @@ const HomeStack = () => {
 			initialRouteName="Home"
 			screenOptions={{
 				headerShown: false
+				
 			}}
 		>
 			<Stack.Screen
@@ -86,7 +87,7 @@ function App() {
 				
 			}}>
 				<Tab.Screen
-					name="HomeStack"
+					name="Home"
 					component={HomeStack}
 					options={{
 						tabBarLabel: 'Home',
@@ -100,7 +101,7 @@ function App() {
 					}}  
 				/>
 				<Tab.Screen 
-					name="AccountStack"
+					name="Account Management"
 					component={AccountStack}
 					options={{
 						tabBarLabel: 'Account',
@@ -114,7 +115,7 @@ function App() {
 					}}
 				/>
 				<Tab.Screen
-					name="SettingsStack"
+					name="App Settings"
 					component={SettingsStack}
 					options={{
 						tabBarLabel: 'Settings',
