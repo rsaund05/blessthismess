@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, SectionList } from 'react-native';
+import { Button } from 'react-native-elements';
 
 const settingsListData = [
     {
@@ -33,6 +34,7 @@ const Settings = ({ navigation }) => {
         <SafeAreaView style={styles.container}>
             <SectionList
                 style={styles.list}
+                scrollEnabled={false}
                 sections={settingsListData}
                 keyExtractor={(item, index) => item + index}
                 renderItem={({item}) => <ListItem item={item} />}
@@ -50,31 +52,34 @@ const styles = StyleSheet.create({
         marginTop: 22
     },
     list: {
-        width: '100%'
+        width: '100%',
+        
     },
     listItemContainer: {
         flex: 1,
         marginRight: 20,
         marginLeft: 20,
         marginTop: 10,
-        backgroundColor: '#9575cd',
+        borderWidth: 1,
+        borderColor: 'lightgrey',
         padding: 10,
         borderRadius: 5,
     },
     listItemText: {
-        color: 'white'
+        color: 'black'
     },
     listHeaderContainer: {
         flex: 1,
         marginRight: 20,
         marginLeft: 20,
         marginTop: 10,
-        backgroundColor: '#2196f3',
+        backgroundColor: 'lightgrey',
         padding: 10,
         borderRadius: 5,
     },
     listHeaderText: {
-        color: 'white'
+        color: 'black',
+        fontWeight: 'bold'
     },
 });
 
