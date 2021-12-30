@@ -20,17 +20,18 @@ const HomeStack = () => {
 		<Stack.Navigator
 			initialRouteName="Home"
 			screenOptions={{
-
+				headerShown: false
 			}}
 		>
 			<Stack.Screen
 				name="Home"
 				component={Home}
+				options={{ title: 'Home Screen' }}
 			/>
 			<Stack.Screen
 				name="Details"
 				component={Details}
-				options={{ title: 'Details Page' }} 
+				options={{ title: 'Details Screen' }} 
 			/>
 		</Stack.Navigator>
 	);
@@ -41,7 +42,7 @@ const HomeStack = () => {
 		<Stack.Navigator
 			initialRouteName="Settings"
 			screenOptions={{
-
+				headerShown: false
 			}}
 		>
 			<Stack.Screen
@@ -65,7 +66,7 @@ const AccountStack = () => {
 		<Stack.Navigator 
 			initialRouteName="Account"
 			screenOptions={{
-
+				headerShown: false
 			}}
 		>
 			<Stack.Screen 
