@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView, SectionList } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, SectionList, TouchableOpacity } from 'react-native';
 import { Button } from 'react-native-elements';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const settingsListData = [
     {
@@ -15,8 +16,18 @@ const settingsListData = [
 
 const ListItem = ({ item }) => {
     return(
-        <View style={styles.listItemContainer}>
-            <Text style={styles.listItemText}>{item}</Text>
+        <View>
+            <TouchableOpacity>
+                <View style={styles.listItemContainer}>
+                    <Text style={styles.listItemText}>{item}</Text>
+                    <MaterialCommunityIcons 
+                            name="chevron-right"
+                            color="black"
+                            size={20}
+                            style={{flexDirection: 'row-reverse'}}
+                        />
+                </View>
+            </TouchableOpacity>
         </View>
     );
 };
@@ -29,6 +40,8 @@ const ListHeader = ({ item }) => {
     );
 };
 
+
+//----------------------------------------------------------------------------------------------------------------------------------
 const Settings = ({ navigation }) => {
     return(
         <SafeAreaView style={styles.container}>
@@ -39,11 +52,13 @@ const Settings = ({ navigation }) => {
                 keyExtractor={(item, index) => item + index}
                 renderItem={({item}) => <ListItem item={item} />}
                 renderSectionHeader={({section}) => <ListHeader item={section} />}
-      />
+            />
         </SafeAreaView>
     );
 }
+//----------------------------------------------------------------------------------------------------------------------------------
 
+//chevron-right
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -57,16 +72,27 @@ const styles = StyleSheet.create({
     },
     listItemContainer: {
         flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
         marginRight: 20,
         marginLeft: 20,
         marginTop: 10,
         borderWidth: 1,
+        backgroundColor: 'white',
         borderColor: 'lightgrey',
         padding: 10,
         borderRadius: 5,
+        shadowColor: 'black',
+        shadowOffset: {width: -2, height: 4},
+        shadowOpacity: 0.05,
+        shadowRadius: 2,
     },
     listItemText: {
-        color: 'black'
+        color: 'black',
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        paddingTop: 2
     },
     listHeaderContainer: {
         flex: 1,
