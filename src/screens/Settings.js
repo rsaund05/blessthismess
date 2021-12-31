@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, SectionList, TouchableOpacity } from 'react-native';
 import { Button } from 'react-native-elements';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import HorizontalButton from '../components/HorizontalButton';
 
 const settingsListData = [
     {
@@ -16,19 +17,10 @@ const settingsListData = [
 
 const ListItem = ({ item }) => {
     return(
-        <View>
-            <TouchableOpacity>
-                <View style={styles.listItemContainer}>
-                    <Text style={styles.listItemText}>{item}</Text>
-                    <MaterialCommunityIcons 
-                            name="chevron-right"
-                            color="black"
-                            size={20}
-                            style={{flexDirection: 'row-reverse'}}
-                        />
-                </View>
-            </TouchableOpacity>
-        </View>
+        <HorizontalButton 
+            item={item}
+            icon="chevron-right"
+        />
     );
 };
 
@@ -69,30 +61,6 @@ const styles = StyleSheet.create({
     list: {
         width: '100%',
         
-    },
-    listItemContainer: {
-        flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginRight: 20,
-        marginLeft: 20,
-        marginTop: 10,
-        borderWidth: 1,
-        backgroundColor: 'white',
-        borderColor: 'lightgrey',
-        padding: 10,
-        borderRadius: 5,
-        shadowColor: 'black',
-        shadowOffset: {width: -2, height: 4},
-        shadowOpacity: 0.05,
-        shadowRadius: 2,
-    },
-    listItemText: {
-        color: 'black',
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'center',
-        paddingTop: 2
     },
     listHeaderContainer: {
         flex: 1,
