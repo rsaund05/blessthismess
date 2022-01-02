@@ -2,11 +2,13 @@ import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, SectionList, TouchableOpacity } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-//Horizontally stretched button with drop shadow, optional MaterialCommunityIcon component can be passed in 
-const HorizontalButton = ({item, icon}) => {
+//Horizontally stretched button with drop shadow, optional MaterialCommunityIcon name can be passed in for additional component
+const HorizontalButton = ({item, icon, onPress}) => {
     return(
         <View>
-            <TouchableOpacity>
+            <TouchableOpacity
+                onPress={onPress}
+            >
                 <View style={styles.containerStyle}>
                     <Text style={styles.textStyle}>{item}</Text>
                     {icon && 

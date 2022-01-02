@@ -8,9 +8,13 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Dashboard from './src/screens/Dashboard';
 import Home from './src/screens/Home';
 import Details from './src/screens/Details';
-import Profile from './src/screens/Profile';
-import Settings from './src/screens/Settings';
+import Settings from './src/screens/SettingsScreens/Settings';
 import Account from './src/screens/Account';
+import ThemeScreen from './src/screens/SettingsScreens/ThemeScreen';
+import ColorScreen from './src/screens/SettingsScreens/ColorScreen';
+import FontScreen from './src/screens/SettingsScreens/FontScreen';
+import AboutScreen from './src/screens/SettingsScreens/AboutScreen';
+import ContactScreen from './src/screens/SettingsScreens/ContactScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -20,19 +24,13 @@ const HomeStack = () => {
 		<Stack.Navigator
 			initialRouteName="Home"
 			screenOptions={{
-				headerShown: false
-				
+				headerShown: false,
 			}}
 		>
 			<Stack.Screen
 				name="Home"
 				component={Home}
 				options={{ title: 'Home Screen' }}
-			/>
-			<Stack.Screen
-				name="Details"
-				component={Details}
-				options={{ title: 'Details Screen' }} 
 			/>
 		</Stack.Navigator>
 	);
@@ -51,12 +49,24 @@ const HomeStack = () => {
 				component={Settings}
 			/>
 			<Stack.Screen
-				name="Details"
-				component={Details}
+				name="Theme"
+				component={ThemeScreen}
 			/>
 			<Stack.Screen
-				name="Profile"
-				component={Profile}
+				name="Color"
+				component={ColorScreen}
+			/>
+			<Stack.Screen
+				name="Font Size"
+				component={FontScreen}
+			/>
+			<Stack.Screen
+				name="Developer"
+				component={AboutScreen}
+			/>
+			<Stack.Screen
+				name="Contact"
+				component={ContactScreen}
 			/>
 		</Stack.Navigator>
 	);
@@ -82,12 +92,10 @@ function App() {
 	return (
 		<NavigationContainer>
 			<Tab.Navigator
-				initialRouteName="Feed"
-				tabBarOptions={{
-				
-			}}>
+				initialRouteName="Home"
+			>
 				<Tab.Screen
-					name="Home"
+					name="blessthismess - Home"
 					component={HomeStack}
 					options={{
 						tabBarLabel: 'Home',

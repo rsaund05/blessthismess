@@ -1,8 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, SectionList, TouchableOpacity } from 'react-native';
-import { Button } from 'react-native-elements';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import HorizontalButton from '../components/HorizontalButton';
+import HorizontalButton from '../../components/HorizontalButton';
 
 const settingsListData = [
     {
@@ -11,18 +9,9 @@ const settingsListData = [
     },
     {
         title: "About",
-        data: ["Developer", "Contact Us"]
+        data: ["Developer", "Contact"]
     }
 ];
-
-const ListItem = ({ item }) => {
-    return(
-        <HorizontalButton 
-            item={item}
-            icon="chevron-right"
-        />
-    );
-};
 
 const ListHeader = ({ item }) => {
     return(
@@ -31,7 +20,6 @@ const ListHeader = ({ item }) => {
         </View>
     );
 };
-
 
 //----------------------------------------------------------------------------------------------------------------------------------
 const Settings = ({ navigation }) => {
@@ -42,7 +30,7 @@ const Settings = ({ navigation }) => {
                 scrollEnabled={false}
                 sections={settingsListData}
                 keyExtractor={(item, index) => item + index}
-                renderItem={({item}) => <ListItem item={item} />}
+                renderItem={({item}) => <HorizontalButton item={item} icon="chevron-right" onPress={() => navigation.navigate(item)}/>}
                 renderSectionHeader={({section}) => <ListHeader item={section} />}
             />
         </SafeAreaView>
@@ -50,7 +38,6 @@ const Settings = ({ navigation }) => {
 }
 //----------------------------------------------------------------------------------------------------------------------------------
 
-//chevron-right
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -60,7 +47,6 @@ const styles = StyleSheet.create({
     },
     list: {
         width: '100%',
-        
     },
     listHeaderContainer: {
         flex: 1,
@@ -73,7 +59,8 @@ const styles = StyleSheet.create({
     },
     listHeaderText: {
         color: 'black',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        fontSize: 18,
     },
 });
 
