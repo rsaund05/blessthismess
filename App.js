@@ -89,6 +89,9 @@ function App() {
 		<NavigationContainer>
 			<Tab.Navigator
 				initialRouteName="Home"
+				screenOptions={{
+					headerShown: false
+				}}
 			>
 				<Tab.Screen
 					name="blessthismess - Home"
