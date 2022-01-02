@@ -16,78 +16,74 @@ import FontScreen from './src/screens/SettingsScreens/FontScreen';
 import AboutScreen from './src/screens/SettingsScreens/AboutScreen';
 import ContactScreen from './src/screens/SettingsScreens/ContactScreen';
 
-const Stack = createNativeStackNavigator();
+const HomeStack = createNativeStackNavigator();
+const SettingsStack = createNativeStackNavigator();
+const AccountStack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-const HomeStack = () => {
+const HomeStackScreen = () => {
 	return (
-		<Stack.Navigator
+		<HomeStack.Navigator
 			initialRouteName="Home"
-			screenOptions={{
-				headerShown: false,
-			}}
+			
 		>
-			<Stack.Screen
+			<HomeStack.Screen
 				name="Home"
 				component={Home}
 				options={{ title: 'Home Screen' }}
 			/>
-		</Stack.Navigator>
+		</HomeStack.Navigator>
 	);
   }
   
-  const SettingsStack = () => {
+  const SettingsStackScreen = () => {
 	return (
-		<Stack.Navigator
+		<SettingsStack.Navigator
 			initialRouteName="Settings"
-			screenOptions={{
-				headerShown: false
-			}}
+			
 		>
-			<Stack.Screen
+			<SettingsStack.Screen
 				name="Settings"
 				component={Settings}
 			/>
-			<Stack.Screen
+			<SettingsStack.Screen
 				name="Theme"
 				component={ThemeScreen}
 			/>
-			<Stack.Screen
+			<SettingsStack.Screen
 				name="Color"
 				component={ColorScreen}
 			/>
-			<Stack.Screen
+			<SettingsStack.Screen
 				name="Font Size"
 				component={FontScreen}
 			/>
-			<Stack.Screen
+			<SettingsStack.Screen
 				name="Developer"
 				component={AboutScreen}
 			/>
-			<Stack.Screen
+			<SettingsStack.Screen
 				name="Contact"
 				component={ContactScreen}
 			/>
-		</Stack.Navigator>
+		</SettingsStack.Navigator>
 	);
   }
 
-const AccountStack = () => {
+const AccountStackScreen = () => {
 	return (
-		<Stack.Navigator 
+		<AccountStack.Navigator 
 			initialRouteName="Account"
-			screenOptions={{
-				headerShown: false
-			}}
 		>
-			<Stack.Screen 
+			<AccountStack.Screen 
 				name="Account"
 				component={Account}
 			/>
-		</Stack.Navigator>
+		</AccountStack.Navigator>
 	);
 }
-  
+
+//----------------------------------------------------------------------------------------------------------------------------------
 function App() {
 	return (
 		<NavigationContainer>
@@ -96,7 +92,7 @@ function App() {
 			>
 				<Tab.Screen
 					name="blessthismess - Home"
-					component={HomeStack}
+					component={HomeStackScreen}
 					options={{
 						tabBarLabel: 'Home',
 						tabBarIcon: ({ color, size }) => (
@@ -110,7 +106,7 @@ function App() {
 				/>
 				<Tab.Screen 
 					name="Account Management"
-					component={AccountStack}
+					component={AccountStackScreen}
 					options={{
 						tabBarLabel: 'Account',
 						tabBarIcon: ({ color, size }) => (
@@ -124,7 +120,7 @@ function App() {
 				/>
 				<Tab.Screen
 					name="App Settings"
-					component={SettingsStack}
+					component={SettingsStackScreen}
 					options={{
 						tabBarLabel: 'Settings',
 						tabBarIcon: ({ color, size }) => (
@@ -140,6 +136,7 @@ function App() {
 		</NavigationContainer>
 	);
 }
+//----------------------------------------------------------------------------------------------------------------------------------
 
 const styles = StyleSheet.create({
 	container: {
