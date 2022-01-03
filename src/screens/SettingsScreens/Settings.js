@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, SectionList, TouchableOpacity } from 'react-native';
-import HorizontalButton from '../../components/HorizontalButton';
+import HorizontalButton from '../../components/Buttons/HorizontalButton';
 
 const settingsListData = [
     {

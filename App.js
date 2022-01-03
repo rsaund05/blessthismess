@@ -5,6 +5,8 @@ import { NavigationContainer, StackActions, TabActions } from '@react-navigation
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { AppearanceProvider } from 'react-native-appearance';
+import { ThemeProvider } from './src/Contexts/ThemeContext';
 import Dashboard from './src/screens/Dashboard';
 import Home from './src/screens/Home';
 import Details from './src/screens/Details';
@@ -86,68 +88,63 @@ const AccountStackScreen = () => {
 //----------------------------------------------------------------------------------------------------------------------------------
 function App() {
 	return (
-		<NavigationContainer>
-			<Tab.Navigator
-				initialRouteName="Home"
-				screenOptions={{
-					headerShown: false
-				}}
-			>
-				<Tab.Screen
-					name="blessthismess - Home"
-					component={HomeStackScreen}
-					options={{
-						tabBarLabel: 'Home',
-						tabBarIcon: ({ color, size }) => (
-						<MaterialCommunityIcons
-							name="home"
-							color={color}
-							size={size}
+		<AppearanceProvider>
+			<ThemeProvider>
+				<NavigationContainer>
+					<Tab.Navigator
+						initialRouteName="Home"
+						screenOptions={{
+							headerShown: false
+						}}
+					>
+						<Tab.Screen
+							name="blessthismess - Home"
+							component={HomeStackScreen}
+							options={{
+								tabBarLabel: 'Home',
+								tabBarIcon: ({ color, size }) => (
+								<MaterialCommunityIcons
+									name="home"
+									color={color}
+									size={size}
+								/>
+								),
+							}}  
 						/>
-						),
-					}}  
-				/>
-				<Tab.Screen 
-					name="Account Management"
-					component={AccountStackScreen}
-					options={{
-						tabBarLabel: 'Account',
-						tabBarIcon: ({ color, size }) => (
-						<MaterialCommunityIcons
-							name="account-details"
-							color={color}
-							size={size}
+						<Tab.Screen 
+							name="Account Management"
+							component={AccountStackScreen}
+							options={{
+								tabBarLabel: 'Account',
+								tabBarIcon: ({ color, size }) => (
+								<MaterialCommunityIcons
+									name="account-details"
+									color={color}
+									size={size}
+								/>
+								),
+							}}
 						/>
-						),
-					}}
-				/>
-				<Tab.Screen
-					name="App Settings"
-					component={SettingsStackScreen}
-					options={{
-						tabBarLabel: 'Settings',
-						tabBarIcon: ({ color, size }) => (
-						<MaterialCommunityIcons
-							name="tune"
-							color={color}
-							size={size}
+						<Tab.Screen
+							name="App Settings"
+							component={SettingsStackScreen}
+							options={{
+								tabBarLabel: 'Settings',
+								tabBarIcon: ({ color, size }) => (
+								<MaterialCommunityIcons
+									name="tune"
+									color={color}
+									size={size}
+								/>
+								),
+							}} 
 						/>
-						),
-					}} 
-				/>
-			</Tab.Navigator>
-		</NavigationContainer>
+					</Tab.Navigator>
+				</NavigationContainer>
+			</ThemeProvider>
+		</AppearanceProvider>
 	);
 }
 //----------------------------------------------------------------------------------------------------------------------------------
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		
-		alignItems: 'center',
-		justifyContent: 'center',
-  	},
-});
 
 export default App;
