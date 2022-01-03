@@ -1,12 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { NavigationContainer, StackActions, TabActions } from '@react-navigation/native';
+import { NavigationContainer, StackActions, TabActions, DefaultTheme, DarkTheme, useTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { AppearanceProvider } from 'react-native-appearance';
-import { ThemeProvider } from './src/Contexts/ThemeContext';
+import { AppearanceProvider, useColorScheme } from 'react-native-appearance';
 import Dashboard from './src/screens/Dashboard';
 import Home from './src/screens/Home';
 import Details from './src/screens/Details';
@@ -87,14 +86,19 @@ const AccountStackScreen = () => {
 
 //----------------------------------------------------------------------------------------------------------------------------------
 function App() {
+	const scheme = useColorScheme();
 	return (
 		<AppearanceProvider>
-			<ThemeProvider>
-				<NavigationContainer>
+				<NavigationContainer
+					theme={scheme === 'dark' ? DarkTheme : DefaultTheme}
+				>
 					<Tab.Navigator
 						initialRouteName="Home"
 						screenOptions={{
-							headerShown: false
+							headerShown: false,
+							tabBarStyle: {
+								
+							}
 						}}
 					>
 						<Tab.Screen
@@ -141,7 +145,6 @@ function App() {
 						/>
 					</Tab.Navigator>
 				</NavigationContainer>
-			</ThemeProvider>
 		</AppearanceProvider>
 	);
 }

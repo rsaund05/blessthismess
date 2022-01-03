@@ -6,6 +6,7 @@ const ThemeScreen = ({ navigation }) => {
     const {setScheme, colors, isDark} = useTheme();
 
     const containerStyle = {
+        flex: 1,
         backgroundColor: colors.background
     };
 
@@ -14,13 +15,13 @@ const ThemeScreen = ({ navigation }) => {
     };
 
     return(
-        <SafeAreaView style={{containerStyle}}>
+        <>
             <StatusBar animated barStyle={isDark ? "light-content" : "dark-content"}/>
-            <View>
+            <View style={containerStyle}>
                 <Text>Select Theme</Text>
                 <Switch value={isDark} onValueChange={toggleScheme}/>
             </View>
-        </SafeAreaView>
+        </>
     );
     
 };
