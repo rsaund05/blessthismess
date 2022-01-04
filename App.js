@@ -95,7 +95,8 @@ function App() {
 			card: "#121212",
 			text: "#FFFFFF",
 			border: "#121212",
-			notification: "#9933FF"
+			notification: "#9933FF",
+			altCard: "#363636"
 		}
 	}
 	return (

@@ -3,6 +3,21 @@ import { StyleSheet, Text, View, SafeAreaView, SectionList, TouchableOpacity } f
 import HorizontalButton from '../../components/Buttons/HorizontalButton';
 import { useTheme } from '@react-navigation/native';
 
+const listHeaderContainer = {
+    flex: 1,
+    marginRight: 20,
+    marginLeft: 20,
+    marginTop: 10,
+    backgroundColor: 'lightgrey',
+    padding: 10,
+    borderRadius: 5,
+}
+const listHeaderText = {
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 18,
+}
+
 const settingsListData = [
     {
         title: "Appearance",
@@ -14,17 +29,23 @@ const settingsListData = [
     }
 ];
 
-const ListHeader = ({ item }) => {
-    return(
-        <View style={styles.listHeaderContainer}>
-            <Text style={styles.listHeaderText}>{item.title}</Text>
-        </View>
-    );
-};
-
 //----------------------------------------------------------------------------------------------------------------------------------
 const Settings = ({ navigation }) => {
-    //const {colors} = useTheme();
+    const {colors} = useTheme();
+    const listHeaderContainer = {
+        flex: 1,
+        marginRight: 20,
+        marginLeft: 20,
+        marginTop: 10,
+        backgroundColor: colors.altCard,
+        padding: 10,
+        borderRadius: 5,
+    }
+    const listHeaderText = {
+        color: colors.text,
+        fontWeight: 'bold',
+        fontSize: 18,
+    }
     return(
         <SafeAreaView style={styles.container}>
             <SectionList
@@ -33,7 +54,11 @@ const Settings = ({ navigation }) => {
                 sections={settingsListData}
                 keyExtractor={(item, index) => item + index}
                 renderItem={({item}) => <HorizontalButton item={item} icon="chevron-right" onPress={() => navigation.navigate(item)}/>}
-                renderSectionHeader={({section}) => <ListHeader item={section} />}
+                renderSectionHeader={({section}) => 
+                    <View style={listHeaderContainer}>
+                        <Text style={listHeaderText}>{section.title}</Text>
+                    </View>
+                }
             />
         </SafeAreaView>
     );
@@ -49,21 +74,7 @@ const styles = StyleSheet.create({
     },
     list: {
         width: '100%',
-    },
-    listHeaderContainer: {
-        flex: 1,
-        marginRight: 20,
-        marginLeft: 20,
-        marginTop: 10,
-        backgroundColor: 'lightgrey',
-        padding: 10,
-        borderRadius: 5,
-    },
-    listHeaderText: {
-        color: 'black',
-        fontWeight: 'bold',
-        fontSize: 18,
-    },
+    }
 });
 
 export default Settings;
