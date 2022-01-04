@@ -7,7 +7,7 @@ const Home = ({ navigation }) => {
     return(
         <SafeAreaView style={{flex: 1}}>
             <View style={{flex: 1, backgroundColor: colors.backgroundColor}}>
-                <Text>HomeScreen</Text>
+                <Text style={{color: colors.text}}>HomeScreen</Text>
             </View>
         </SafeAreaView>
     );

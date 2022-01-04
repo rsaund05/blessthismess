@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, SectionList, TouchableOpacity } from 'react-native';
 import HorizontalButton from '../../components/Buttons/HorizontalButton';
+import { useTheme } from '@react-navigation/native';
 
 const settingsListData = [
     {
@@ -23,6 +24,7 @@ const ListHeader = ({ item }) => {
 
 //----------------------------------------------------------------------------------------------------------------------------------
 const Settings = ({ navigation }) => {
+    //const {colors} = useTheme();
     return(
         <SafeAreaView style={styles.container}>
             <SectionList

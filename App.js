@@ -16,7 +16,7 @@ import ColorScreen from './src/screens/SettingsScreens/ColorScreen';
 import FontScreen from './src/screens/SettingsScreens/FontScreen';
 import AboutScreen from './src/screens/SettingsScreens/AboutScreen';
 import ContactScreen from './src/screens/SettingsScreens/ContactScreen';
-
+//dimgray
 const HomeStack = createNativeStackNavigator();
 const SettingsStack = createNativeStackNavigator();
 const AccountStack = createNativeStackNavigator();
@@ -87,15 +87,28 @@ const AccountStackScreen = () => {
 //----------------------------------------------------------------------------------------------------------------------------------
 function App() {
 	const scheme = useColorScheme();
+	const CustomDarkTheme = {
+		dark: true,
+		colors: {
+			primary: "#9933FF",
+			background: "#000000",
+			card: "#121212",
+			text: "#FFFFFF",
+			border: "#121212",
+			notification: "#9933FF"
+		}
+	}
 	return (
 		<AppearanceProvider>
 				<NavigationContainer
-					theme={scheme === 'dark' ? DarkTheme : DefaultTheme}
+					theme={scheme === 'dark' ? CustomDarkTheme : DefaultTheme}
 				>
 					<Tab.Navigator
 						initialRouteName="Home"
 						screenOptions={{
 							headerShown: false,
+							headerTransparent: true,
+							
 							tabBarStyle: {
 								
 							}
