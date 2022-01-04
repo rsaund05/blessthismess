@@ -37,7 +37,7 @@ const Settings = ({ navigation }) => {
         marginRight: 20,
         marginLeft: 20,
         marginTop: 10,
-        backgroundColor: colors.altCard,
+        backgroundColor: 'transparent',
         padding: 10,
         borderRadius: 5,
     }

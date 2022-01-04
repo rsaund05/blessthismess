@@ -87,22 +87,32 @@ const AccountStackScreen = () => {
 //----------------------------------------------------------------------------------------------------------------------------------
 function App() {
 	const scheme = useColorScheme();
+	const CustomLightTheme = {
+		dark: false,
+		colors: {
+			primary: "#FF0000",
+			background: "#F5F5F5",
+			card: "#FFFFFF",
+			text: "#000000",
+			border: "#FFFFFF",
+			notification: "#9933FF"
+		}
+	}
 	const CustomDarkTheme = {
 		dark: true,
 		colors: {
-			primary: "#9933FF",
+			primary: "#FF0000",
 			background: "#000000",
 			card: "#121212",
 			text: "#FFFFFF",
 			border: "#121212",
 			notification: "#9933FF",
-			altCard: "#363636"
 		}
 	}
 	return (
 		<AppearanceProvider>
 				<NavigationContainer
-					theme={scheme === 'dark' ? CustomDarkTheme : DefaultTheme}
+					theme={scheme === 'dark' ? CustomDarkTheme : CustomLightTheme}
 				>
 					<Tab.Navigator
 						initialRouteName="Home"
