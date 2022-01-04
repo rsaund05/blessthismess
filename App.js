@@ -90,8 +90,8 @@ function App() {
 	const CustomLightTheme = {
 		dark: false,
 		colors: {
-			primary: "#FF0000",
-			background: "#F5F5F5",
+			primary: "#FC0B0B",
+			background: "#EFEFEF",
 			card: "#FFFFFF",
 			text: "#000000",
 			border: "#FFFFFF",
@@ -101,7 +101,7 @@ function App() {
 	const CustomDarkTheme = {
 		dark: true,
 		colors: {
-			primary: "#FF0000",
+			primary: "#FC0B0B",
 			background: "#000000",
 			card: "#121212",
 			text: "#FFFFFF",
