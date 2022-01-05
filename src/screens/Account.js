@@ -7,7 +7,8 @@ const Account = ({ navigation }) => {
     const promptStyle = {
         color: colors.text,
         textAlign: 'center',
-        fontSize: 17
+        fontSize: 20,
+        marginHorizontal: 15
     }
     const containerStyle = {
         flex: 1,
