@@ -60,6 +60,7 @@ const Settings = ({ navigation }) => {
                     </View>
                 }
             />
+            
         </SafeAreaView>
     );
 }
@@ -74,6 +75,7 @@ const styles = StyleSheet.create({
     },
     list: {
         width: '100%',
+        
     }
 });
 

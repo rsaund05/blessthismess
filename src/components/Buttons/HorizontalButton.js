@@ -18,25 +18,18 @@ const HorizontalButton = ({item, icon, onPress}) => {
         borderColor: colors.card,
         padding: 10,
         borderRadius: 5,
-        ...Platform.select({
-            ios: {
-                shadowColor: 'black',
-                shadowOffset: {width: -2, height: 4},
-                shadowOpacity: 0.05,
-                shadowRadius: 2,
-            },
-            android: {
-                elevation: 5
-            }
-        }),
-        
+        shadowColor: 'black',
+        shadowOffset: {width: -2, height: 4},
+        shadowOpacity: 0.05,
+        shadowRadius: 2,
+        elevation: 5,
     }
     const textStyle = {
         color: colors.text,
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'center',
-        paddingTop: 2
+        paddingTop: 2,
     }
     return(
         <View>
