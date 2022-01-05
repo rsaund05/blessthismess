@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView, SectionList, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, SectionList, TouchableOpacity, Platform } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useTheme } from '@react-navigation/native';
 
@@ -18,10 +18,18 @@ const HorizontalButton = ({item, icon, onPress}) => {
         borderColor: colors.card,
         padding: 10,
         borderRadius: 5,
-        shadowColor: 'black',
-        shadowOffset: {width: -2, height: 4},
-        shadowOpacity: 0.05,
-        shadowRadius: 2,
+        ...Platform.select({
+            ios: {
+                shadowColor: 'black',
+                shadowOffset: {width: -2, height: 4},
+                shadowOpacity: 0.05,
+                shadowRadius: 2,
+            },
+            android: {
+                elevation: 5
+            }
+        }),
+        
     }
     const textStyle = {
         color: colors.text,

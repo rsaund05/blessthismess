@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, TextInput, TouchableOpacity, Platform } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 
 const Account = ({ navigation }) => {
@@ -47,13 +47,24 @@ const Account = ({ navigation }) => {
                 >
                     <Text style={{color: colors.primary, fontSize: 17}}>Create Account</Text>
                 </TouchableOpacity>
-                <Text style={{color: colors.text, textAlign: 'center'}}>{"\n"}If you already have an account, 
+                {(Platform.OS === 'ios') && 
+                    <Text style={{color: colors.text, textAlign: 'center'}}>{"\n"}If you already have an account,
                     <TouchableOpacity style={{
                         marginTop: -3
                     }}>
                         <Text style={{color: colors.primary, textAlign: 'center'}}> sign in here</Text>
                     </TouchableOpacity>
-                </Text>
+                    </Text>
+                } 
+                {(Platform.OS === 'android') &&
+                    <Text style={{color: colors.text, textAlign: 'center'}}>{"\n"}If you already have an account,{"\n"}
+                    <TouchableOpacity style={{
+                        
+                    }}>
+                        <Text style={{color: colors.primary, textAlign: 'center'}}>sign in here</Text>
+                    </TouchableOpacity>
+                    </Text>
+                }
             </View>
         </SafeAreaView>
     );
