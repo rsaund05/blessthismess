@@ -14,31 +14,16 @@ var temp_3 = 0.4;
 var summary_data_str_1 = `Items Due: ${temp_1}`;
 var summary_data_str_2 =  `Calendar Events: ${5}`;
 
-var DASH_ID_LIST = ["12345678", "87654321", "11223344", "55667788"];
+var DASH_ID_LIST = [{id: "12345678", name: "Kids", dash_items: ["Tasks", "Calendar","Reminders"]}, {id: "87654321", name: "Groceries & Coupons", dash_items: ["List", "Images", "Reminders"]}, {id: "11223344", name: "Mom's Work Schedule", dash_items: ["Calendar", "Reminders"]}, {id: "55667788", name: "Dad's Work Schedule", dash_items: ["Calendar", "Reminders"]}];
 
 
 const Home = ({ navigation }) => {
     const {colors} = useTheme();
     
-    const promptStyle = {
-        color: colors.text,
-        textAlign: 'center',
-        fontSize: 20,
-        marginHorizontal: 15
-    };
-    const listHeaderContainer = {
-        flex: 1,
-        marginRight: 20,
-        marginLeft: 20,
-        marginTop: 10,
-        backgroundColor: 'transparent',
-        padding: 10,
-        borderRadius: 5,
-    };
     const listHeaderText = {
         color: colors.text,
         fontWeight: 'bold',
-        fontSize: 18,
+        fontSize: 24,
         marginLeft: 20,
         marginTop: 30
     };
@@ -46,7 +31,7 @@ const Home = ({ navigation }) => {
         color: colors.text,
         fontWeight: 'bold',
         fontSize: 14,
-        
+        padding: 5
     }
     const cardStyle = {
         marginRight: 20,
@@ -90,15 +75,16 @@ const Home = ({ navigation }) => {
                         </View>
                     }
                 /> */}
-                <View style={{marginBottom: 'auto'}}>
+                
                 <FlatList
                     scrollEnabled={false}
+                    contentContainerStyle={{padding: 5}}
                     ListHeaderComponent={() => <Text style={listHeaderText}>Your Dashboards</Text>}
                     data={DASH_ID_LIST}
-                    keyExtractor={(item, index) => item}
-                    renderItem={({item}) => <HorizontalButton item={item} icon={"bulletin-board"} iconSize={35} onPress={() => console.log("pressed")}/>}
+                    keyExtractor={(item, index) => item.id}
+                    renderItem={({item}) => <HorizontalButton item={item.name} subItem={item.dash_items.join(", ")} icon={"bulletin-board"} iconSize={35} onPress={() => console.log("pressed")}/>}
                 />
-                </View>
+                
             </ScrollView>
         </View>
     );
