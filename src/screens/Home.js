@@ -6,29 +6,15 @@ import moment from 'moment';
 import { AppleHeader } from "@freakycoder/react-native-header-view";
 import ProgressBar from 'react-native-progress/Bar';
 
-var current_date = moment().format('MMMM Do YYYY, h:mm a');
+var current_date = moment().format('MMMM Do YYYY');
 var temp_1 = 1;
 var temp_2 = 5;
 var temp_3 = 0.4;
 
 var summary_data_str_1 = `Items Due: ${temp_1}`;
 var summary_data_str_2 =  `Calendar Events: ${5}`;
-var summary_data_str_3 = `Items Completed: %${temp_3*100}`;
 
-const SUMMARY_LIST = [
-    {
-        title: `Summary for ${current_date}`,
-        
-    },
-];
-
-const DASH_LIST = [
-    {
-        title: "Your Dashboards",
-        data: ["DASH_PLACEHOLDER_1", "DASH_PLACEHOLDER_2", "DASH_PLACEHOLDER_3", "DASH_PLACEHOLDER_4"]
-    }
-];
-
+var DASH_ID_LIST = ["12345678", "87654321", "11223344", "55667788"];
 
 
 const Home = ({ navigation }) => {
@@ -53,6 +39,8 @@ const Home = ({ navigation }) => {
         color: colors.text,
         fontWeight: 'bold',
         fontSize: 18,
+        marginLeft: 20,
+        marginTop: 30
     };
     const summaryStyle={
         color: colors.text,
@@ -78,8 +66,9 @@ const Home = ({ navigation }) => {
             <AppleHeader
                 dateTitle={current_date} 
                 largeTitle="Your Summary"
+                largeTitleFontColor={colors.text}
             />
-            <View style={cardStyle}>
+            <View style={[cardStyle, {marginTop: 20}]}>
                 <Text style={summaryStyle}>{summary_data_str_1}</Text>
                 <Text style={summaryStyle}>{summary_data_str_2}</Text>
                 
@@ -89,7 +78,7 @@ const Home = ({ navigation }) => {
                 <Text style={[summaryStyle, {marginBottom: 5}]}>Daily Task Completion Progress: %{temp_3*100}</Text>
                 <ProgressBar width={null}progress={temp_3}color={colors.primary}/>
             </View>
-            <SectionList
+            {/* <SectionList
                 style={styles.list}
                 scrollEnabled={false}
                 sections={DASH_LIST}
@@ -100,7 +89,16 @@ const Home = ({ navigation }) => {
                         <Text style={listHeaderText}>{section.title}</Text>
                     </View>
                 }
+            /> */}
+            <View >
+            <FlatList
+                ListHeaderComponent={() => <Text style={listHeaderText}>Your Dashboards</Text>}
+                data={DASH_ID_LIST}
+                keyExtractor={(item, index) => item}
+                renderItem={({item}) => <HorizontalButton item={item} icon={"bulletin-board"} iconSize={35} onPress={() => console.log("pressed")}/>}
             />
+            </View>
+            
         </SafeAreaView>
     );
 }
