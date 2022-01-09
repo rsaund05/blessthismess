@@ -40,12 +40,12 @@ const Settings = ({ navigation }) => {
         backgroundColor: 'transparent',
         padding: 10,
         borderRadius: 5,
-    }
+    };
     const listHeaderText = {
         color: colors.text,
         fontWeight: 'bold',
         fontSize: 18,
-    }
+    };
     return(
         <SafeAreaView style={styles.container}>
             <SectionList
@@ -53,7 +53,7 @@ const Settings = ({ navigation }) => {
                 scrollEnabled={false}
                 sections={settingsListData}
                 keyExtractor={(item, index) => item + index}
-                renderItem={({item}) => <HorizontalButton item={item} icon="chevron-right" onPress={() => navigation.navigate(item)}/>}
+                renderItem={({item}) => <HorizontalButton item={item} icon="chevron-right" iconSize={20} onPress={() => navigation.navigate(item)}/>}
                 renderSectionHeader={({section}) => 
                     <View style={listHeaderContainer}>
                         <Text style={listHeaderText}>{section.title}</Text>

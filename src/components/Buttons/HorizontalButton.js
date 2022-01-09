@@ -4,7 +4,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { useTheme } from '@react-navigation/native';
 
 //Horizontally stretched button with drop shadow, optional MaterialCommunityIcon name can be passed in for additional component
-const HorizontalButton = ({item, icon, onPress}) => {
+const HorizontalButton = ({item, icon, iconSize, onPress}) => {
     const {colors} = useTheme();
     const containerStyle = {
         flex: 1,
@@ -53,8 +53,8 @@ const HorizontalButton = ({item, icon, onPress}) => {
                     {icon && 
                         <MaterialCommunityIcons 
                             name={icon}
-                            color="black"
-                            size={20}
+                            color={colors.primary}
+                            size={iconSize}
                             style={{flexDirection: 'row-reverse'}}
                         />
                     }

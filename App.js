@@ -16,6 +16,8 @@ import ColorScreen from './src/screens/SettingsScreens/ColorScreen';
 import FontScreen from './src/screens/SettingsScreens/FontScreen';
 import AboutScreen from './src/screens/SettingsScreens/AboutScreen';
 import ContactScreen from './src/screens/SettingsScreens/ContactScreen';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 //dimgray
 const HomeStack = createNativeStackNavigator();
 const SettingsStack = createNativeStackNavigator();
@@ -31,7 +33,7 @@ const HomeStackScreen = () => {
 			<HomeStack.Screen
 				name="Home"
 				component={Home}
-				options={{ title: 'Home Screen' }}
+				options={{ title: 'EXAMPLE_HOUSEHOLD' }}
 			/>
 		</HomeStack.Navigator>
 	);
