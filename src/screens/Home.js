@@ -5,6 +5,8 @@ import HorizontalButton from '../components/Buttons/HorizontalButton';
 import moment from 'moment';
 import { AppleHeader } from "@freakycoder/react-native-header-view";
 import ProgressBar from 'react-native-progress/Bar';
+import HOUSEHOLD_ID from '../api/HouseHold';
+import DASH_LIST from '../api/DashboardList';
 
 var current_date = moment().format("dddd, MMMM Do YYYY, h:mm a");
 var totalTasksDueToday = 5;
@@ -15,9 +17,6 @@ var tasksPercentComplete = tasksCompleted / totalTasksDueToday;
 
 var summary_data_str_1 = `Tasks Remaining Today: ${tasksRemaining}`;
 var summary_data_str_2 =  `Calendar Events Today: ${calendarEventsToday}`;
-
-var DASH_ID_LIST = [{id: "12345678", name: "Kids", dash_items: ["Task List", "Calendar","Reminder List"]}, {id: "87654321", name: "Groceries & Coupons", dash_items: ["List", "Reminder List", "Images"]}, {id: "11223344", name: "Mom's Work Schedule", dash_items: ["Calendar", "Reminder List"]}, {id: "55667788", name: "Dad's Work Schedule", dash_items: ["Calendar", "Reminder List"]}];
-
 
 const Home = ({ navigation }) => {
     const {colors} = useTheme();
@@ -129,7 +128,7 @@ const Home = ({ navigation }) => {
                     scrollEnabled={false}
                     contentContainerStyle={{padding: 5}}
                     ListHeaderComponent={() => <Text style={listHeaderText}>Your Dashboards</Text>}
-                    data={DASH_ID_LIST}
+                    data={DASH_LIST}
                     keyExtractor={(item, index) => item.id}
                     renderItem={({item}) => <HorizontalButton item={item.name} subItem={item.dash_items.join(", ")} bold={true} icon={"bulletin-board"} iconSize={35} onPress={() => console.log("pressed")}/>}
                 />

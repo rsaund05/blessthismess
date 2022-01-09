@@ -17,6 +17,7 @@ import FontScreen from './src/screens/SettingsScreens/FontScreen';
 import AboutScreen from './src/screens/SettingsScreens/AboutScreen';
 import ContactScreen from './src/screens/SettingsScreens/ContactScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import HOUSEHOLD_ID from './src/api/HouseHold';
 
 //dimgray
 const HomeStack = createNativeStackNavigator();
@@ -35,7 +36,7 @@ const HomeStackScreen = () => {
 			<HomeStack.Screen
 				name="Home"
 				component={Home}
-				options={{ title: 'EXAMPLE_HOUSEHOLD', cardStyle: { backgroundColor: "transparent" } }}
+				options={{ title: HOUSEHOLD_ID.label, cardStyle: { backgroundColor: "transparent" } }}
 			/>
 		</HomeStack.Navigator>
 	);
