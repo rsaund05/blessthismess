@@ -28,12 +28,14 @@ const HomeStackScreen = () => {
 	return (
 		<HomeStack.Navigator
 			initialRouteName="Home"
-			
+			screenOptions={{
+				
+			}}
 		>
 			<HomeStack.Screen
 				name="Home"
 				component={Home}
-				options={{ title: 'EXAMPLE_HOUSEHOLD' }}
+				options={{ title: 'EXAMPLE_HOUSEHOLD', cardStyle: { backgroundColor: "transparent" } }}
 			/>
 		</HomeStack.Navigator>
 	);
@@ -43,31 +45,39 @@ const HomeStackScreen = () => {
 	return (
 		<SettingsStack.Navigator
 			initialRouteName="Settings"
-			
+			screenOptions={{
+				
+			}}
 		>
 			<SettingsStack.Screen
 				name="Settings"
 				component={Settings}
+				options={{cardStyle: { backgroundColor: "transparent" }}}
 			/>
 			<SettingsStack.Screen
 				name="Theme"
 				component={ThemeScreen}
+				options={{cardStyle: { backgroundColor: "transparent" }}}
 			/>
 			<SettingsStack.Screen
 				name="Color"
 				component={ColorScreen}
+				options={{cardStyle: { backgroundColor: "transparent" }}}
 			/>
 			<SettingsStack.Screen
 				name="Font Size"
 				component={FontScreen}
+				options={{cardStyle: { backgroundColor: "transparent" }}}
 			/>
 			<SettingsStack.Screen
 				name="Developer"
 				component={AboutScreen}
+				options={{cardStyle: { backgroundColor: "transparent" }}}
 			/>
 			<SettingsStack.Screen
 				name="Contact"
 				component={ContactScreen}
+				options={{cardStyle: { backgroundColor: "transparent" }}}
 			/>
 		</SettingsStack.Navigator>
 	);
@@ -77,10 +87,14 @@ const AccountStackScreen = () => {
 	return (
 		<AccountStack.Navigator 
 			initialRouteName="Account"
+			screenOptions={{
+				
+			}}
 		>
 			<AccountStack.Screen 
 				name="Account"
 				component={Account}
+				options={{cardStyle: { backgroundColor: "transparent" }}}
 			/>
 		</AccountStack.Navigator>
 	);
@@ -115,6 +129,7 @@ function App() {
 		<AppearanceProvider>
 				<NavigationContainer
 					theme={scheme === 'dark' ? CustomDarkTheme : CustomLightTheme}
+					
 				>
 					<Tab.Navigator
 						initialRouteName="Home"
