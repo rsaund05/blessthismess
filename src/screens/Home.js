@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { StyleSheet, Text, View, SafeAreaView, ScrollView, FlatList } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import HorizontalButton from '../components/Buttons/HorizontalButton';
@@ -6,7 +6,7 @@ import moment from 'moment';
 import { AppleHeader } from "@freakycoder/react-native-header-view";
 import ProgressBar from 'react-native-progress/Bar';
 
-var current_date = moment().format('MMMM Do YYYY');
+var current_date = moment().format("dddd, MMMM Do YYYY, h:mm a");
 var temp_1 = 1;
 var temp_2 = 5;
 var temp_3 = 0.4;
@@ -19,6 +19,7 @@ var DASH_ID_LIST = [{id: "12345678", name: "Kids", dash_items: ["Tasks", "Calend
 
 const Home = ({ navigation }) => {
     const {colors} = useTheme();
+    const [dateTimeUpdate, setDateTimeUpdate] = useState(moment().format("dddd, MMMM Do YYYY, h:mm:ss a"));
     
     const listHeaderText = {
         color: colors.text,
@@ -27,6 +28,11 @@ const Home = ({ navigation }) => {
         marginLeft: 20,
         marginTop: 30
     };
+    const dateStrStyle = {
+        color: colors.text,
+        fontSize: 12,
+        marginLeft: 25,
+    }
     const summaryStyle={
         color: colors.text,
         fontWeight: 'bold',
@@ -46,14 +52,16 @@ const Home = ({ navigation }) => {
         flexDirection: 'row',
         justifyContent: 'space-between'
     }
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setDateTimeUpdate(moment().format("dddd, MMMM Do YYYY, h:mm a"))
+        })
+    });
     return(
         <View style={{flex: 1, flexDirection: 'column'}}>
             <ScrollView indicatorStyle='black' showsVerticalScrollIndicator={true}>
-                <AppleHeader
-                    dateTitle={current_date} 
-                    largeTitle="Your Summary"
-                    largeTitleFontColor={colors.text}
-                />
+                <Text style={listHeaderText}>Your Summary</Text>
+                <Text style={dateStrStyle}>for {dateTimeUpdate}</Text>
                 <View style={[cardStyle, {marginTop: 20}]}>
                     <Text style={summaryStyle}>{summary_data_str_1}</Text>
                     <Text style={summaryStyle}>{summary_data_str_2}</Text>
@@ -82,7 +90,7 @@ const Home = ({ navigation }) => {
                     ListHeaderComponent={() => <Text style={listHeaderText}>Your Dashboards</Text>}
                     data={DASH_ID_LIST}
                     keyExtractor={(item, index) => item.id}
-                    renderItem={({item}) => <HorizontalButton item={item.name} subItem={item.dash_items.join(", ")} icon={"bulletin-board"} iconSize={35} onPress={() => console.log("pressed")}/>}
+                    renderItem={({item}) => <HorizontalButton item={item.name} subItem={item.dash_items.join(", ")} bold={true} icon={"bulletin-board"} iconSize={35} onPress={() => console.log("pressed")}/>}
                 />
                 
             </ScrollView>
