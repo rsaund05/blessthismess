@@ -7,7 +7,6 @@ import { useTheme } from '@react-navigation/native';
 const HorizontalButton = ({item, subItem, icon, iconSize, bold, onPress}) => {
     const {colors} = useTheme();
     const containerStyle = {
-        flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginRight: 20,

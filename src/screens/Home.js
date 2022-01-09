@@ -7,6 +7,9 @@ import { AppleHeader } from "@freakycoder/react-native-header-view";
 import ProgressBar from 'react-native-progress/Bar';
 import HOUSEHOLD_ID from '../api/HouseHold';
 import DASH_LIST from '../api/DashboardList';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import AddDashModal from '../components/Modals/AddDashModal';
 
 var current_date = moment().format("dddd, MMMM Do YYYY, h:mm a");
 var totalTasksDueToday = 5;
@@ -21,46 +24,8 @@ var summary_data_str_2 =  `Calendar Events Today: ${calendarEventsToday}`;
 const Home = ({ navigation }) => {
     const {colors} = useTheme();
     const [dateTimeUpdate, setDateTimeUpdate] = useState(moment().format("dddd, MMMM Do YYYY, h:mm:ss a"));
-    var encouragementStr = ""
-    if((tasksPercentComplete === 0) && totalTasksDueToday > 0) {
-        encouragementStr = "Better get started!";
-    } else if(((tasksPercentComplete > 0) && (tasksPercentComplete < 0.25)) && (totalTasksDueToday > 0)) {
-        encouragementStr = "Off to a great start!"
-    } else if((tasksPercentComplete >= 0.25) && (tasksPercentComplete < 0.5) && (totalTasksDueToday > 0)) {
-        encouragementStr = "Over a quarter done, nice pace!";
-    } else if((tasksPercentComplete === 0.5) && (totalTasksDueToday > 0)) {
-        encouragementStr = "Halfway there!";
-    } else if((tasksPercentComplete >= 0.5) && (tasksPercentComplete < 0.75) && (totalTasksDueToday > 0)) {
-        encouragementStr = "Over halfway there, keep it up!";
-    } else if((tasksPercentComplete >= 0.75) && (tasksPercentComplete < 1) && (totalTasksDueToday > 0)) {
-        encouragementStr = "So close to being done!";
-    } else if((tasksPercentComplete === 1) && (totalTasksDueToday > 0)) {
-        encouragementStr = "All tasks done for today, nice!";
-    }else {
-        encouragementStr="No tasks due today";
-    }
-    // switch(tasksPercentComplete) {
-    //     case (0) && (tasksDueToday > 0):
-    //         encouragementStr = "Better get started!";
-    //         break;
-    //     case ((tasksPercentComplete >= 0.25) && (tasksPercentComplete < 0.5)) && (tasksDueToday > 0):
-    //         encouragementStr = "Off to a great start!";
-    //         break;
-    //     case (tasksPercentComplete === 0.5) && (tasksDueToday > 0):
-    //         encouragementStr = "Halfway there!";
-    //         break;
-    //     case ((tasksPercentComplete >= 0.5) && (tasksPercentComplete < 0.75)) && (tasksDueToday > 0):
-    //         encouragementStr = "Over halfway there, keep it up!";
-    //         break;
-    //     case ((tasksPercentComplete >= 0.75) && (tasksPercentComplete < 1) && (tasksDueToday > 0)):
-    //         encouragementStr = "So close to being done!";
-    //         break;
-    //     case (tasksPercentComplete === 1) && (tasksDueToday > 0):
-    //         encouragementStr = "All tasks done for today, nice!";
-    //         break;
-    //     default:
-    //         encouragementStr = "No tasks due today";
-    // };
+    const [modalVisible, setModalVisible] = useState(false);
+    
     const listHeaderText = {
         color: colors.text,
         fontWeight: 'bold',
@@ -92,13 +57,36 @@ const Home = ({ navigation }) => {
         flexDirection: 'row',
         justifyContent: 'space-between'
     }
+
+    //Set encouragement string based on percentage of tasks complete
+    var encouragementStr = ""
+    if((tasksPercentComplete === 0) && totalTasksDueToday > 0) {
+        encouragementStr = "Better get started!";
+    } else if(((tasksPercentComplete > 0) && (tasksPercentComplete < 0.25)) && (totalTasksDueToday > 0)) {
+        encouragementStr = "Off to a great start!"
+    } else if((tasksPercentComplete >= 0.25) && (tasksPercentComplete < 0.5) && (totalTasksDueToday > 0)) {
+        encouragementStr = "Over a quarter done, nice pace!";
+    } else if((tasksPercentComplete === 0.5) && (totalTasksDueToday > 0)) {
+        encouragementStr = "Halfway there!";
+    } else if((tasksPercentComplete >= 0.5) && (tasksPercentComplete < 0.75) && (totalTasksDueToday > 0)) {
+        encouragementStr = "Over halfway there, keep it up!";
+    } else if((tasksPercentComplete >= 0.75) && (tasksPercentComplete < 1) && (totalTasksDueToday > 0)) {
+        encouragementStr = "So close to being done!";
+    } else if((tasksPercentComplete === 1) && (totalTasksDueToday > 0)) {
+        encouragementStr = "All tasks done for today, nice!";
+    }else {
+        encouragementStr="No tasks due today";
+    }
+
     useEffect(() => {
         const interval = setInterval(() => {
             setDateTimeUpdate(moment().format("dddd, MMMM Do YYYY, h:mm a"))
         })
     });
+
     return(
         <View style={{flex: 1, flexDirection: 'column'}}>
+            <AddDashModal visible={modalVisible} setVisible={setModalVisible} />
             <ScrollView indicatorStyle='black' showsVerticalScrollIndicator={true}>
                 <Text style={listHeaderText}>Your Summary</Text>
                 <Text style={dateStrStyle}>for {dateTimeUpdate}</Text>
@@ -111,28 +99,33 @@ const Home = ({ navigation }) => {
                     <ProgressBar width={null} progress={tasksPercentComplete}color={colors.primary}/>
                     <Text style={[summaryStyle, {fontWeight: "normal", fontStyle: "italic"}]}>{encouragementStr}</Text>
                 </View>
-                {/* <SectionList
-                    style={styles.list}
-                    scrollEnabled={false}
-                    sections={DASH_LIST}
-                    keyExtractor={(item, index) => item + index}
-                    renderItem={({item}) => <HorizontalButton item={item} icon={"bulletin-board"} iconSize={35} onPress={() => navigation.navigate(item)}/>}
-                    renderSectionHeader={({section}) => 
-                        <View style={listHeaderContainer}>
-                            <Text style={listHeaderText}>{section.title}</Text>
-                        </View>
-                    }
-                /> */}
                 
                 <FlatList
                     scrollEnabled={false}
                     contentContainerStyle={{padding: 5}}
-                    ListHeaderComponent={() => <Text style={listHeaderText}>Your Dashboards</Text>}
+                    ListHeaderComponent={() => {
+                            return(
+                                <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
+                                    <Text style={listHeaderText}>Your Dashboards</Text>
+                                    <TouchableOpacity 
+                                        style={{marginRight: 20, marginTop: 32}}
+                                        onPress={() => setModalVisible(!modalVisible)}
+                                    >
+                                        <MaterialCommunityIcons 
+                                            name={"plus-circle-outline"}
+                                            color={colors.primary}
+                                            size={25}
+                                        />
+                                    </TouchableOpacity>
+                                </View>
+                            );
+                            
+                        }
+                    }
                     data={DASH_LIST}
                     keyExtractor={(item, index) => item.id}
                     renderItem={({item}) => <HorizontalButton item={item.name} subItem={item.dash_items.join(", ")} bold={true} icon={"bulletin-board"} iconSize={35} onPress={() => console.log("pressed")}/>}
                 />
-                
             </ScrollView>
         </View>
     );
