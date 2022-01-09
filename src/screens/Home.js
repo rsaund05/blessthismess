@@ -103,7 +103,7 @@ const Home = ({ navigation }) => {
             <ScrollView indicatorStyle='black' showsVerticalScrollIndicator={true}>
                 <Text style={listHeaderText}>Your Summary</Text>
                 <Text style={dateStrStyle}>for {dateTimeUpdate}</Text>
-                <View style={[cardStyle, {marginTop: 20}]}>
+                <View style={[cardStyle, {marginTop: 20, flexWrap: 'wrap'}]}>
                     <Text style={summaryStyle}>{summary_data_str_1}</Text>
                     <Text style={summaryStyle}>{summary_data_str_2}</Text>
                 </View>
