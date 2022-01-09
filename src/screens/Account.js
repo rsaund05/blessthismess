@@ -11,7 +11,8 @@ const Account = ({ navigation }) => {
         color: colors.text,
         textAlign: 'center',
         fontSize: 20,
-        marginHorizontal: 15
+        marginHorizontal: 15,
+        marginTop: 30
     };
     const containerStyle = {
         flex: 1,
