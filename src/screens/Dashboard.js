@@ -7,6 +7,7 @@ const Dashboard = ({ navigaton, route }) => {
             <Text>Dashboard</Text>
             <Text>ID: {route.params.dash_id}</Text>
             <Text>Name: {route.params.name}</Text>
+            <Text>Components: {route.params.dash_items.join(", ")}</Text>
         </View>
     );
 };
