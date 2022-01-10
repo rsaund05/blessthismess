@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, SafeAreaView, ScrollView, FlatList } from 'reac
 import { useTheme } from '@react-navigation/native';
 import HorizontalButton from '../components/Buttons/HorizontalButton';
 import moment from 'moment';
-import { AppleHeader } from "@freakycoder/react-native-header-view";
 import ProgressBar from 'react-native-progress/Bar';
 import HOUSEHOLD_ID from '../api/HouseHold';
 import DASH_LIST from '../api/DashboardList';
@@ -137,7 +136,10 @@ const Home = ({ navigation }) => {
                         
                     }
                 }
+                ListEmptyComponent={<Text style={[summaryStyle, {fontWeight: 'normal', marginHorizontal: 15, textAlign: 'center'}]}>You haven't created a dashboard yet. Tap the '+' icon above to begin.</Text>}
                 data={DASH_LIST}
+                // refreshing={true}
+                // onRefresh={() => console.log('refreshed')}
                 keyExtractor={(item, index) => item.id}
                 renderItem={({item}) => 
                     <HorizontalButton 

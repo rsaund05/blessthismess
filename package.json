@@ -8,8 +8,6 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "@freakycoder/react-native-bounceable": "^0.2.5",
-    "@freakycoder/react-native-header-view": "^1.2.0",
     "@react-native-async-storage/async-storage": "~1.15.0",
     "@react-native-community/async-storage": "^1.12.1",
     "@react-native-community/masked-view": "^0.1.11",
