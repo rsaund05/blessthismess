@@ -1,24 +1,21 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, StatusBar, Switch } from 'react-native';
+import { useTheme } from '@react-navigation/native';
 
 const ThemeScreen = ({ navigation }) => {
-    const {setScheme, colors, isDark} = useTheme();
+    const {colors, isDark} = useTheme();
 
     const containerStyle = {
         flex: 1,
         backgroundColor: colors.background
     };
 
-    const toggleScheme = () => {
-        isDark ? setScheme('light'): setScheme('dark');
-    };
-
     return(
         <>
-            <StatusBar animated barStyle={isDark ? "light-content" : "dark-content"}/>
+            <StatusBar animated />
             <View style={containerStyle}>
                 <Text>Select Theme</Text>
-                <Switch value={isDark} onValueChange={toggleScheme}/>
+                <Switch />
             </View>
         </>
     );

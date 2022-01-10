@@ -124,7 +124,7 @@ const Home = ({ navigation }) => {
                     }
                     data={DASH_LIST}
                     keyExtractor={(item, index) => item.id}
-                    renderItem={({item}) => <HorizontalButton item={item.name} subItem={item.dash_items.join(", ")} bold={true} icon={"bulletin-board"} iconSize={35} onPress={() => console.log("pressed")}/>}
+                    renderItem={({item}) => <HorizontalButton item={item.name} subItem={item.dash_items.join(", ")} bold={true} icon={"bulletin-board"} iconSize={35} onPress={() => navigation.navigate('Dashboard', {dash_id: item.id, name: item.name})}/>}
                 />
             </View>
         </SafeAreaView>
