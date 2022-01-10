@@ -60,6 +60,7 @@ const Home = ({ navigation }) => {
         //borderWidth: 1,
         backgroundColor: colors.card,
         zIndex: 2,
+        marginTop: -10,
         // borderColor: colors.card,
         // padding: 10,
         elevation: 15,
