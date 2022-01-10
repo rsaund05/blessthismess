@@ -59,6 +59,7 @@ const Home = ({ navigation }) => {
     const summaryContainer = {
         //borderWidth: 1,
         backgroundColor: colors.card,
+        zIndex: 2,
         // borderColor: colors.card,
         // padding: 10,
         borderRadius: 5,
