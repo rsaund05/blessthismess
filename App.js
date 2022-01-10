@@ -32,19 +32,35 @@ const HomeStackScreen = () => {
 			initialRouteName="Home"
 			screenOptions={{
 				headerBackTitleVisible: false
+				
 			}}
 		>
 			<HomeStack.Screen
 				name="Home"
 				component={Home}
 				options={{ 
-					title: HOUSEHOLD_ID.label
+					title: HOUSEHOLD_ID.label,
+					headerStyle: {
+						backgroundColor: "#FC0B0B",
+					},
+					headerTintColor: '#FFFFFF',
+					headerTitleStyle: {
+						fontWeight: 'bold',
+					},
 				}}
 			/>
 			<HomeStack.Screen
 				name="Dashboard"
 				component={Dashboard}
-				options={({route}) => ({title: route.params.title})}
+				options={({route}) => ({title: route.params.title,
+					headerStyle: {
+						backgroundColor: "#FC0B0B",
+					},
+					headerTintColor: '#FFFFFF',
+					headerTitleStyle: {
+						fontWeight: 'bold',
+					},
+				})}
 			/>
 		</HomeStack.Navigator>
 	);
@@ -61,32 +77,80 @@ const HomeStackScreen = () => {
 			<SettingsStack.Screen
 				name="Settings"
 				component={Settings}
-				options={{cardStyle: { backgroundColor: "transparent" }}}
+				options={{
+					headerStyle: {
+						backgroundColor: "#FC0B0B",
+					},
+					headerTintColor: '#FFFFFF',
+					headerTitleStyle: {
+						fontWeight: 'bold',
+					},
+				}}
 			/>
 			<SettingsStack.Screen
 				name="Theme"
 				component={ThemeScreen}
-				options={{cardStyle: { backgroundColor: "transparent" }}}
+				options={{
+					headerStyle: {
+						backgroundColor: "#FC0B0B",
+					},
+					headerTintColor: '#FFFFFF',
+					headerTitleStyle: {
+						fontWeight: 'bold',
+					},
+				}}
 			/>
 			<SettingsStack.Screen
 				name="Color"
 				component={ColorScreen}
-				options={{cardStyle: { backgroundColor: "transparent" }}}
+				options={{
+					headerStyle: {
+						backgroundColor: "#FC0B0B",
+					},
+					headerTintColor: '#FFFFFF',
+					headerTitleStyle: {
+						fontWeight: 'bold',
+					},
+				}}
 			/>
 			<SettingsStack.Screen
 				name="Font Size"
 				component={FontScreen}
-				options={{cardStyle: { backgroundColor: "transparent" }}}
+				options={{
+					headerStyle: {
+						backgroundColor: "#FC0B0B",
+					},
+					headerTintColor: '#FFFFFF',
+					headerTitleStyle: {
+						fontWeight: 'bold',
+					},
+				}}
 			/>
 			<SettingsStack.Screen
 				name="Developer"
 				component={AboutScreen}
-				options={{cardStyle: { backgroundColor: "transparent" }}}
+				options={{
+					headerStyle: {
+						backgroundColor: "#FC0B0B",
+					},
+					headerTintColor: '#FFFFFF',
+					headerTitleStyle: {
+						fontWeight: 'bold',
+					},
+				}}
 			/>
 			<SettingsStack.Screen
 				name="Contact"
 				component={ContactScreen}
-				options={{cardStyle: { backgroundColor: "transparent" }}}
+				options={{
+					headerStyle: {
+						backgroundColor: "#FC0B0B",
+					},
+					headerTintColor: '#FFFFFF',
+					headerTitleStyle: {
+						fontWeight: 'bold',
+					},
+				}}
 			/>
 		</SettingsStack.Navigator>
 	);
@@ -103,7 +167,15 @@ const AccountStackScreen = () => {
 			<AccountStack.Screen 
 				name="Account"
 				component={Account}
-				options={{cardStyle: { backgroundColor: "transparent" }}}
+				options={{
+					headerStyle: {
+						backgroundColor: "#FC0B0B",
+				  	},
+				  	headerTintColor: '#FFFFFF',
+				  	headerTitleStyle: {
+						fontWeight: 'bold',
+				  	},
+				}}
 			/>
 		</AccountStack.Navigator>
 	);
