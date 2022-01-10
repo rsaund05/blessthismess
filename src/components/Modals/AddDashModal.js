@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, TextInput, TouchableOpacity, Platform, Modal, Button } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, TextInput, TouchableOpacity, Platform, Modal, Button, } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import HorizontalButton from '../Buttons/HorizontalButton';
 

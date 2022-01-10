@@ -14,7 +14,7 @@ import AddDashModal from '../components/Modals/AddDashModal';
 var current_date = moment().format("dddd, MMMM Do YYYY, h:mm a");
 var totalTasksDueToday = 5;
 var calendarEventsToday = 2;
-var tasksCompleted = 3;
+var tasksCompleted = 1;
 var tasksRemaining = totalTasksDueToday - tasksCompleted;
 var tasksPercentComplete = tasksCompleted / totalTasksDueToday;
 
@@ -95,7 +95,7 @@ const Home = ({ navigation }) => {
                     <Text style={summaryStyle}>{summary_data_str_2}</Text>
                 </View>
                 <View style={[cardStyle, {marginTop: 10, flexDirection: 'column'}]}>
-                    <Text style={[summaryStyle, {marginBottom: 5}]}>Today's Task Completion Progress: %{tasksPercentComplete*100}</Text>
+                    <Text style={[summaryStyle, {marginBottom: 5}]}>Today's Task Completion Progress: {tasksPercentComplete*100}%</Text>
                     <ProgressBar width={null} progress={tasksPercentComplete}color={colors.primary}/>
                     <Text style={[summaryStyle, {fontWeight: "normal", fontStyle: "italic"}]}>{encouragementStr}</Text>
                 </View>
