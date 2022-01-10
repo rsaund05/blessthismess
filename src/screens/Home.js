@@ -62,9 +62,10 @@ const Home = ({ navigation }) => {
         zIndex: 2,
         // borderColor: colors.card,
         // padding: 10,
+        elevation: 15,
         borderRadius: 5,
         shadowColor: 'black',
-        shadowOffset: {width: -4, height: 6},
+        shadowOffset: {height: 6},
         shadowOpacity: .2,
         shadowRadius: 4,
     };
