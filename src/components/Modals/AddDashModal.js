@@ -22,8 +22,24 @@ const AddDashModal = ({visible, setVisible}) => {
     };
     const promptStyle = {
         color: colors.text,
-        fontSize: 17,
-        marginHorizontal: 15
+        fontSize: 15,
+        marginHorizontal: 20,
+        marginVertical: 5
+    };
+    const listHeaderText = {
+        color: colors.text,
+        fontWeight: 'bold',
+        fontSize: 24,
+        marginLeft: 20,
+        marginTop: 30
+    };
+    const titleStyle = {
+        color: colors.text,
+        fontSize: 18,
+        alignItems: 'center',
+        fontWeight: 'bold',
+        padding: 15,
+        marginVertical: -36
     };
 
     return(
@@ -39,8 +55,8 @@ const AddDashModal = ({visible, setVisible}) => {
             <View style={{flexDirection: 'row', backgroundColor: colors.background}}>
                 <TouchableOpacity 
                     style={{
-                        paddingLeft: 15,
-                        paddingTop: 15,
+                        marginLeft: 20,
+                        marginTop: 20,
                     }}
                     onPress={() => setVisible(!visible)}
                 >
@@ -48,7 +64,15 @@ const AddDashModal = ({visible, setVisible}) => {
                 </TouchableOpacity>
             </View>
             <View style={{flex: 1, flexDirection: 'column', backgroundColor: colors.background}}>
-                <Text style={[promptStyle, {marginTop: 20}]}>Dashboard Name</Text>
+                <View style={{flexDirection: 'column', alignItems: 'center'}}>
+                    <Text style={titleStyle}>Add Dashboard</Text>
+                </View>
+                <View style={{marginVertical: 20}}>
+                    <Text style={promptStyle}>Dashboards contain all of the things you need to track and organize your household.</Text>
+                    <Text style={promptStyle}>You can make multiple dashboards for different purposes, such as trakcing groceries and coupons, or specific schedules.</Text>
+                    <Text style={promptStyle}>Dashboards can contain as many components that you need, such as calendars, reminder lists, images, etc.</Text>
+                </View>
+                <Text style={listHeaderText}>Dashboard Name</Text>
                 <TextInput 
                     placeholder='Enter Dashboard Name'
                     style={inputStyle}
