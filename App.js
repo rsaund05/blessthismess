@@ -31,7 +31,7 @@ const HomeStackScreen = () => {
 		<HomeStack.Navigator
 			initialRouteName="Home"
 			screenOptions={{
-				
+				headerBackTitleVisible: false
 			}}
 		>
 			<HomeStack.Screen
@@ -44,9 +44,7 @@ const HomeStackScreen = () => {
 			<HomeStack.Screen
 				name="Dashboard"
 				component={Dashboard}
-				options={{  
-
-				}}
+				options={({route}) => ({title: route.params.title})}
 			/>
 		</HomeStack.Navigator>
 	);

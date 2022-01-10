@@ -37,26 +37,36 @@ const Home = ({ navigation }) => {
         color: colors.text,
         fontSize: 12,
         marginLeft: 25,
-    }
+    };
     const summaryStyle={
         color: colors.text,
         fontWeight: 'bold',
         fontSize: 14,
         padding: 5
-    }
+    };
     const cardStyle = {
         marginRight: 20,
         marginLeft: 20,
         padding:10,
         borderWidth: 1,
         borderRadius: 5,
-        backgroundColor: colors.card,
-        borderColor: colors.card,
-        backgroundColor: colors.card,
-        borderColor: colors.card,
+        backgroundColor: colors.background,
+        borderColor: colors.background,
         flexDirection: 'row',
         justifyContent: 'space-between'
-    }
+    };
+
+    const summaryContainer = {
+        //borderWidth: 1,
+        backgroundColor: colors.card,
+        // borderColor: colors.card,
+        // padding: 10,
+        borderRadius: 5,
+        shadowColor: 'black',
+        shadowOffset: {width: -4, height: 6},
+        shadowOpacity: .2,
+        shadowRadius: 4,
+    };
 
     //Set encouragement string based on percentage of tasks complete
     var encouragementStr = ""
@@ -87,46 +97,55 @@ const Home = ({ navigation }) => {
     return(
         <SafeAreaView style={{flex: 1, flexDirection: 'column'}}>
             <AddDashModal visible={modalVisible} setVisible={setModalVisible} />
-            <View >
+            <View style={summaryContainer}>
                 <Text style={listHeaderText}>Your Summary</Text>
                 <Text style={dateStrStyle}>for {dateTimeUpdate}</Text>
-                <View style={[cardStyle, {marginTop: 20, flexWrap: 'wrap'}]}>
+                <View style={[cardStyle, {marginTop: 10, flexWrap: 'wrap'}]}>
                     <Text style={summaryStyle}>{summary_data_str_1}</Text>
                     <Text style={summaryStyle}>{summary_data_str_2}</Text>
                 </View>
-                <View style={[cardStyle, {marginTop: 10, flexDirection: 'column'}]}>
+                <View style={[cardStyle, { marginTop: 10, marginBottom: 10, flexDirection: 'column'}]}>
                     <Text style={[summaryStyle, {marginBottom: 5}]}>Today's Task Completion Progress: {tasksPercentComplete*100}%</Text>
                     <ProgressBar width={null} progress={tasksPercentComplete}color={colors.primary}/>
                     <Text style={[summaryStyle, {fontWeight: "normal", fontStyle: "italic"}]}>{encouragementStr}</Text>
                 </View>
-                
-                <FlatList
-                    scrollEnabled={true}
-                    contentContainerStyle={{padding: 5}}
-                    ListHeaderComponent={() => {
-                            return(
-                                <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
-                                    <Text style={listHeaderText}>Your Dashboards</Text>
-                                    <TouchableOpacity 
-                                        style={{marginRight: 20, marginTop: 32}}
-                                        onPress={() => setModalVisible(!modalVisible)}
-                                    >
-                                        <MaterialCommunityIcons 
-                                            name={"plus-circle-outline"}
-                                            color={colors.primary}
-                                            size={25}
-                                        />
-                                    </TouchableOpacity>
-                                </View>
-                            );
-                            
-                        }
-                    }
-                    data={DASH_LIST}
-                    keyExtractor={(item, index) => item.id}
-                    renderItem={({item}) => <HorizontalButton item={item.name} subItem={item.dash_items.join(", ")} bold={true} icon={"bulletin-board"} iconSize={35} onPress={() => navigation.navigate('Dashboard', {dash_id: item.id, name: item.name, dash_items: item.dash_items})}/>}
-                />
             </View>
+            
+                
+            <FlatList
+                scrollEnabled={true}
+                contentContainerStyle={{padding: 5}}
+                ListHeaderComponent={() => {
+                        return(
+                            <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
+                                <Text style={listHeaderText}>Your Dashboards</Text>
+                                <TouchableOpacity 
+                                    style={{marginRight: 20, marginTop: 32}}
+                                    onPress={() => setModalVisible(!modalVisible)}
+                                >
+                                    <MaterialCommunityIcons 
+                                        name={"plus-circle-outline"}
+                                        color={colors.primary}
+                                        size={25}
+                                    />
+                                </TouchableOpacity>
+                            </View>
+                        );
+                        
+                    }
+                }
+                data={DASH_LIST}
+                keyExtractor={(item, index) => item.id}
+                renderItem={({item}) => 
+                    <HorizontalButton 
+                        item={item.name} 
+                        subItem={item.dash_items.join(", ")} 
+                        bold={true} icon={"bulletin-board"} 
+                        iconSize={35} 
+                        onPress={() => navigation.navigate('Dashboard', {title: item.name, dash_id: item.id, name: item.name, dash_items: item.dash_items})}
+                    />
+                }
+            />
         </SafeAreaView>
     );
 }

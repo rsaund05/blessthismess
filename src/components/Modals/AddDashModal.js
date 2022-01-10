@@ -39,7 +39,7 @@ const AddDashModal = ({visible, setVisible}) => {
         alignItems: 'center',
         fontWeight: 'bold',
         padding: 15,
-        marginVertical: -36
+        marginVertical: -34
     };
 
     return(
