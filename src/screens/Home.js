@@ -85,9 +85,9 @@ const Home = ({ navigation }) => {
     });
 
     return(
-        <View style={{flex: 1, flexDirection: 'column'}}>
+        <SafeAreaView style={{flex: 1, flexDirection: 'column'}}>
             <AddDashModal visible={modalVisible} setVisible={setModalVisible} />
-            <ScrollView indicatorStyle='black' showsVerticalScrollIndicator={true}>
+            <View >
                 <Text style={listHeaderText}>Your Summary</Text>
                 <Text style={dateStrStyle}>for {dateTimeUpdate}</Text>
                 <View style={[cardStyle, {marginTop: 20, flexWrap: 'wrap'}]}>
@@ -101,7 +101,7 @@ const Home = ({ navigation }) => {
                 </View>
                 
                 <FlatList
-                    scrollEnabled={false}
+                    scrollEnabled={true}
                     contentContainerStyle={{padding: 5}}
                     ListHeaderComponent={() => {
                             return(
@@ -126,8 +126,8 @@ const Home = ({ navigation }) => {
                     keyExtractor={(item, index) => item.id}
                     renderItem={({item}) => <HorizontalButton item={item.name} subItem={item.dash_items.join(", ")} bold={true} icon={"bulletin-board"} iconSize={35} onPress={() => console.log("pressed")}/>}
                 />
-            </ScrollView>
-        </View>
+            </View>
+        </SafeAreaView>
     );
 }
 
