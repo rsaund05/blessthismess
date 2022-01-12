@@ -22,6 +22,7 @@
     "react-native": "0.64.3",
     "react-native-appearance": "^0.3.4",
     "react-native-calendars": "^1.1275.0",
+    "react-native-editable-list": "^1.0.3",
     "react-native-elegant-header": "^0.1.0",
     "react-native-elements": "^3.4.2",
     "react-native-gesture-handler": "~1.10.2",

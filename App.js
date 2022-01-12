@@ -8,7 +8,6 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { AppearanceProvider, useColorScheme } from 'react-native-appearance';
 import Dashboard from './src/screens/Dashboard';
 import Home from './src/screens/Home';
-import Details from './src/screens/Details';
 import Settings from './src/screens/SettingsScreens/Settings';
 import Account from './src/screens/Account';
 import ThemeScreen from './src/screens/SettingsScreens/ThemeScreen';
@@ -20,7 +19,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import HOUSEHOLD_ID from './src/api/HouseHold';
 import DASH_LIST from './src/api/DashboardList';
 
-//dimgray
 const HomeStack = createNativeStackNavigator();
 const SettingsStack = createNativeStackNavigator();
 const AccountStack = createNativeStackNavigator();
