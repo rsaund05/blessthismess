@@ -4,8 +4,8 @@ import { useTheme } from '@react-navigation/native';
 import HorizontalButton from '../components/Buttons/HorizontalButton';
 import moment from 'moment';
 import ProgressBar from 'react-native-progress/Bar';
-import HOUSEHOLD_ID from '../api/HouseHold';
-import DASH_LIST from '../api/DashboardList';
+import HOUSEHOLD_ID from '../models/HouseHold';
+import DASH_LIST from '../models/DashboardList';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AddDashModal from '../components/Modals/AddDashModal';
@@ -19,6 +19,29 @@ var tasksPercentComplete = tasksCompleted / totalTasksDueToday;
 
 var summary_data_str_1 = `Tasks Remaining Today: ${tasksRemaining}`;
 var summary_data_str_2 =  `Calendar Events Today: ${calendarEventsToday}`;
+
+//Set encouragement string based on percentage of tasks complete
+var encouragementStr = ""
+
+const generateEncouragementStr = () => {
+    if((tasksPercentComplete === 0) && totalTasksDueToday > 0) {
+        encouragementStr = "Better get started!";
+    } else if(((tasksPercentComplete > 0) && (tasksPercentComplete < 0.25)) && (totalTasksDueToday > 0)) {
+        encouragementStr = "Off to a great start!"
+    } else if((tasksPercentComplete >= 0.25) && (tasksPercentComplete < 0.5) && (totalTasksDueToday > 0)) {
+        encouragementStr = "Over a quarter done, nice pace!";
+    } else if((tasksPercentComplete === 0.5) && (totalTasksDueToday > 0)) {
+        encouragementStr = "Halfway there!";
+    } else if((tasksPercentComplete >= 0.5) && (tasksPercentComplete < 0.75) && (totalTasksDueToday > 0)) {
+        encouragementStr = "Over halfway there, keep it up!";
+    } else if((tasksPercentComplete >= 0.75) && (tasksPercentComplete < 1) && (totalTasksDueToday > 0)) {
+        encouragementStr = "So close to being done!";
+    } else if((tasksPercentComplete === 1) && (totalTasksDueToday > 0)) {
+        encouragementStr = "All tasks done for today, nice!";
+    }else {
+        encouragementStr="No tasks due today";
+    }
+}
 
 const Home = ({ navigation }) => {
     const {colors} = useTheme();
@@ -69,32 +92,15 @@ const Home = ({ navigation }) => {
         shadowOpacity: .2,
         shadowRadius: 4,
     };
-
-    //Set encouragement string based on percentage of tasks complete
-    var encouragementStr = ""
-    if((tasksPercentComplete === 0) && totalTasksDueToday > 0) {
-        encouragementStr = "Better get started!";
-    } else if(((tasksPercentComplete > 0) && (tasksPercentComplete < 0.25)) && (totalTasksDueToday > 0)) {
-        encouragementStr = "Off to a great start!"
-    } else if((tasksPercentComplete >= 0.25) && (tasksPercentComplete < 0.5) && (totalTasksDueToday > 0)) {
-        encouragementStr = "Over a quarter done, nice pace!";
-    } else if((tasksPercentComplete === 0.5) && (totalTasksDueToday > 0)) {
-        encouragementStr = "Halfway there!";
-    } else if((tasksPercentComplete >= 0.5) && (tasksPercentComplete < 0.75) && (totalTasksDueToday > 0)) {
-        encouragementStr = "Over halfway there, keep it up!";
-    } else if((tasksPercentComplete >= 0.75) && (tasksPercentComplete < 1) && (totalTasksDueToday > 0)) {
-        encouragementStr = "So close to being done!";
-    } else if((tasksPercentComplete === 1) && (totalTasksDueToday > 0)) {
-        encouragementStr = "All tasks done for today, nice!";
-    }else {
-        encouragementStr="No tasks due today";
-    }
+    
 
     useEffect(() => {
         const interval = setInterval(() => {
             setDateTimeUpdate(moment().format("dddd, MMMM Do YYYY, h:mm a"))
         })
     });
+    
+    generateEncouragementStr();
 
     return(
         <SafeAreaView style={{flex: 1, flexDirection: 'column'}}>

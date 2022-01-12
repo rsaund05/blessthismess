@@ -3,8 +3,9 @@ import { StyleSheet, Text, View, SafeAreaView, FlatList, TouchableOpacity, Platf
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useTheme } from '@react-navigation/native';
 import HorizontalButton from '../Buttons/HorizontalButton';
+import ContextMenu from 'react-native-context-menu-view';
 
-const GenericList = ({list}) => {
+const GenericList = ({list, shadowedActionButtons}) => {
     const {colors} = useTheme();
     const listHeaderText = {
         color: colors.text,
@@ -63,10 +64,21 @@ const GenericList = ({list}) => {
         shadowOpacity: .2,
         shadowRadius: 4,
     };
+
+    const actionButtonStyle = {
+        marginRight: 20, 
+        marginTop: 32,
+    }
+
+    const actionButtonShadow = {
+        shadowColor: 'black',
+        shadowOffset: {width: 2, height: 4},
+        shadowOpacity: .5,
+        shadowRadius: 4,
+        elevation: 15
+    }
     return(
         <View style={listContainerStyle}>
-            {/* <Text>REMINDER_LISTITEMS: {list.join(", ")}</Text> */}
-            
             <FlatList
                 scrollEnabled={false}
                 contentContainerStyle={{marginTop: -20}}
@@ -74,16 +86,30 @@ const GenericList = ({list}) => {
                         return(
                             <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
                                 <Text style={listHeaderText}>LIST_TITLE</Text>
-                                <TouchableOpacity 
-                                    style={{marginRight: 20, marginTop: 32}}
-                                    onPress={() => console.log("listitem_added")}
-                                >
-                                    <MaterialCommunityIcons 
-                                        name={"plus-circle-outline"}
-                                        color={colors.primary}
-                                        size={25}
-                                    />
-                                </TouchableOpacity>
+                                <View style={{flexDirection: 'row'}}>
+                                    <TouchableOpacity 
+                                        style={[actionButtonStyle, {marginRight: 2}, shadowedActionButtons ? actionButtonShadow : {}]}
+                                        onPress={() => console.log("listoptions")}
+                                    >
+                                        <MaterialCommunityIcons 
+                                            name={"plus-circle-outline"}
+                                            color={colors.primary}
+                                            size={25}
+                                        />
+                                    </TouchableOpacity>
+                                    
+                                        <TouchableOpacity 
+                                            style={[actionButtonStyle, shadowedActionButtons ? actionButtonShadow : {}]}
+                                            onPress={() => console.log("listitem_added")}
+                                        >
+                                            <MaterialCommunityIcons 
+                                                name={"dots-horizontal-circle-outline"}
+                                                color={colors.primary}
+                                                size={25}
+                                            />
+                                        </TouchableOpacity>
+                                    
+                                </View>
                             </View>
                         );
                         
@@ -97,11 +123,12 @@ const GenericList = ({list}) => {
                 renderItem={({item}) => 
                     <HorizontalButton 
                         item={item.name}  
-                        bold={false} 
+                        bold={false}
                         altStyle={{backgroundColor: colors.background, borderColor: colors.background}}
                     />
                 }
             />
+            <ContextMenu title="tits"></ContextMenu>
         </View>
     );
 };
