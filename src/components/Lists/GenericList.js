@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, SafeAreaView, FlatList, TouchableOpacity, Platf
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useTheme } from '@react-navigation/native';
 import HorizontalButton from '../Buttons/HorizontalButton';
-import ContextMenu from 'react-native-context-menu-view';
 
 const GenericList = ({list, shadowedActionButtons}) => {
     const {colors} = useTheme();
