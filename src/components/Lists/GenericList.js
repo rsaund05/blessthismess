@@ -42,7 +42,7 @@ const GenericList = ({list, shadowedActionButtons}) => {
         backgroundColor: colors.card,
         borderColor: colors.card,
         padding: 10,
-        borderRadius: 5,
+        borderRadius: 10,
         shadowColor: 'black',
         shadowOffset: {width: -2, height: 4},
         shadowOpacity: 0.05,
@@ -75,6 +75,10 @@ const GenericList = ({list, shadowedActionButtons}) => {
         shadowOpacity: .5,
         shadowRadius: 4,
         elevation: 15
+    }
+
+    const calendarContainer = {
+        
     }
     return(
         <View style={listContainerStyle}>
@@ -127,7 +131,7 @@ const GenericList = ({list, shadowedActionButtons}) => {
                     />
                 }
             />
-            <ContextMenu title="tits"></ContextMenu>
+            
         </View>
     );
 };
