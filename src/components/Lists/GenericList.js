@@ -85,7 +85,7 @@ const GenericList = ({list, shadowedActionButtons}) => {
         <View style={listContainerStyle}>
             <FlatList
                 scrollEnabled={false}
-                //keyExtractor={(item, index) => item.id + id.name}
+                keyExtractor={(item, index) => item.id + item.name}
                 contentContainerStyle={{marginTop: -20}}
                 ListHeaderComponent={() => {
                         return(

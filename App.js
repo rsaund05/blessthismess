@@ -16,8 +16,6 @@ import FontScreen from './src/screens/SettingsScreens/FontScreen';
 import AboutScreen from './src/screens/SettingsScreens/AboutScreen';
 import ContactScreen from './src/screens/SettingsScreens/ContactScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import HOUSEHOLD_ID from './src/api/HouseHold';
-import DASH_LIST from './src/api/DashboardList';
 
 const HomeStack = createNativeStackNavigator();
 const SettingsStack = createNativeStackNavigator();
@@ -37,7 +35,6 @@ const HomeStackScreen = () => {
 				name="Home"
 				component={Home}
 				options={{ 
-					title: HOUSEHOLD_ID.label,
 					headerStyle: {
 						backgroundColor: "#FC0B0B",
 					},

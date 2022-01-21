@@ -5,7 +5,7 @@ import HorizontalButton from '../components/Buttons/HorizontalButton';
 import moment from 'moment';
 import ProgressBar from 'react-native-progress/Bar';
 import Household from '../models/Household';
-// import DashboardData from '../models/Dashboard';
+import DashboardData from '../models/DashboardData';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AddDashModal from '../components/Modals/AddDashModal';
@@ -18,9 +18,6 @@ var tasksRemaining = totalTasksDueToday - tasksCompleted;
 var tasksPercentComplete = tasksCompleted / totalTasksDueToday;
 
 var DASH_LIST_TEMP = [{id: "12345678", name: "Kids", dash_items: ["Task List", "Calendar","Reminder List"]}, {id: "87654321", name: "Groceries & Coupons", dash_items: ["List", "Reminder List", "Images"]}, {id: "11223344", name: "Mom's Work Schedule", dash_items: ["Calendar", "Reminder List"]}, {id: "55667788", name: "Dad's Work Schedule", dash_items: ["Calendar", "Reminder List"]}];
-
-var USER_HOUSEHOLD = new Household('11223344', "The Testersons", 4, false);
-// var USER_DASH_LIST = new DashboardData();
 
 var summary_data_str_1 = `Tasks Remaining Today: ${tasksRemaining}`;
 var summary_data_str_2 =  `Calendar Events Today: ${calendarEventsToday}`;
@@ -47,11 +44,25 @@ const generateEncouragementStr = () => {
         encouragementStr="No tasks due today";
     }
 }
+var temp = 'fucker';
 
 const Home = ({ navigation }) => {
     const {colors} = useTheme();
     const [dateTimeUpdate, setDateTimeUpdate] = useState(moment().format("dddd, MMMM Do YYYY, h:mm:ss a"));
     const [modalVisible, setModalVisible] = useState(false);
+
+    var USER_HOUSEHOLD = new Household('11223344', "The Testersons", 4, false);
+    var USER_DASH_LIST = new DashboardData('1a2b3c4d', '11223344', [{id: "12345678", name: "Kids", dash_items: ["Task List", "Calendar","Reminder List"]}, {id: "87654321", name: "Groceries & Coupons", dash_items: ["List", "Reminder List", "Images"]}, {id: "11223344", name: "Mom's Work Schedule", dash_items: ["Calendar", "Reminder List"]}, {id: "55667788", name: "Dad's Work Schedule", dash_items: ["Calendar", "Reminder List"]}]);
+
+    // navigation.setOptions({
+    //     title: USER_HOUSEHOLD.label
+    // }, []);
+
+    useEffect(() => {
+        navigation.setOptions({
+            title: USER_HOUSEHOLD.label
+        });
+    }, []);
     
     const listHeaderText = {
         color: colors.text,
