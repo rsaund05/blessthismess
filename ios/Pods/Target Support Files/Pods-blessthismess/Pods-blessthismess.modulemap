@@ -1,0 +1,6 @@
+module Pods_blessthismess {
+  umbrella header "Pods-blessthismess-umbrella.h"
+
+  export *
+  module * { export * }
+}

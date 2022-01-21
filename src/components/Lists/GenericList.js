@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, SafeAreaView, FlatList, TouchableOpacity, Platf
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useTheme } from '@react-navigation/native';
 import HorizontalButton from '../Buttons/HorizontalButton';
+import OptionsMenu from "react-native-option-menu";
 
 const GenericList = ({list, shadowedActionButtons}) => {
     const {colors} = useTheme();
@@ -84,6 +85,7 @@ const GenericList = ({list, shadowedActionButtons}) => {
         <View style={listContainerStyle}>
             <FlatList
                 scrollEnabled={false}
+                keyExtractor={(item, index) => item.id + id.name}
                 contentContainerStyle={{marginTop: -20}}
                 ListHeaderComponent={() => {
                         return(
@@ -122,7 +124,6 @@ const GenericList = ({list, shadowedActionButtons}) => {
                 data={list}
                 // refreshing={true}
                 // onRefresh={() => console.log('refreshed')}
-                keyExtractor={(item, index) => item.id}
                 renderItem={({item}) => 
                     <HorizontalButton 
                         item={item.name}  

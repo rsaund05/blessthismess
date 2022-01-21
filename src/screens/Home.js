@@ -4,7 +4,7 @@ import { useTheme } from '@react-navigation/native';
 import HorizontalButton from '../components/Buttons/HorizontalButton';
 import moment from 'moment';
 import ProgressBar from 'react-native-progress/Bar';
-import HOUSEHOLD_ID from '../models/HouseHold';
+import HOUSEHOLD from '../models/HouseHold';
 import DASH_LIST from '../models/DashboardList';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -16,6 +16,8 @@ var calendarEventsToday = 2;
 var tasksCompleted = 1;
 var tasksRemaining = totalTasksDueToday - tasksCompleted;
 var tasksPercentComplete = tasksCompleted / totalTasksDueToday;
+
+var DASH_LIST_TEMP = [{id: "12345678", name: "Kids", dash_items: ["Task List", "Calendar","Reminder List"]}, {id: "87654321", name: "Groceries & Coupons", dash_items: ["List", "Reminder List", "Images"]}, {id: "11223344", name: "Mom's Work Schedule", dash_items: ["Calendar", "Reminder List"]}, {id: "55667788", name: "Dad's Work Schedule", dash_items: ["Calendar", "Reminder List"]}];
 
 var summary_data_str_1 = `Tasks Remaining Today: ${tasksRemaining}`;
 var summary_data_str_2 =  `Calendar Events Today: ${calendarEventsToday}`;
@@ -143,7 +145,7 @@ const Home = ({ navigation }) => {
                     }
                 }
                 ListEmptyComponent={<Text style={[summaryStyle, {fontWeight: 'normal', marginHorizontal: 15, textAlign: 'center'}]}>You haven't created a dashboard yet. Tap the '+' icon above to begin.</Text>}
-                data={DASH_LIST}
+                data={DASH_LIST_TEMP}
                 // refreshing={true}
                 // onRefresh={() => console.log('refreshed')}
                 keyExtractor={(item, index) => item.id}
