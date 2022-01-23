@@ -6,7 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { AppearanceProvider, useColorScheme } from 'react-native-appearance';
-import Dashboard from './src/screens/Dashboard';
+import DashboardScreen from './src/screens/DashboardScreen';
 import Home from './src/screens/Home';
 import Settings from './src/screens/SettingsScreens/Settings';
 import Account from './src/screens/Account';
@@ -46,7 +46,7 @@ const HomeStackScreen = () => {
 			/>
 			<HomeStack.Screen
 				name="Dashboard"
-				component={Dashboard}
+				component={DashboardScreen}
 				options={({route}) => ({title: route.params.title,
 					headerStyle: {
 						backgroundColor: "#FC0B0B",

@@ -44,32 +44,26 @@ const generateEncouragementStr = () => {
         encouragementStr="No tasks due today";
     }
 }
-var temp = 'fucker';
+
+const generateTestHousehold = () => {
+    var TEST_HOUSEHOLD = new Household('11223344', "The Testersons", 4, false);
+    return TEST_HOUSEHOLD;
+};  
 
 const Home = ({ navigation }) => {
     const {colors} = useTheme();
     const [dateTimeUpdate, setDateTimeUpdate] = useState(moment().format("dddd, MMMM Do YYYY, h:mm:ss a"));
     const [modalVisible, setModalVisible] = useState(false);
 
-    var USER_HOUSEHOLD = new Household('11223344', "The Testersons", 4, false);
+    var USER_HOUSEHOLD = generateTestHousehold();
     var USER_DASH_LIST = new DashboardData('1a2b3c4d', '11223344', [{id: "12345678", name: "Kids", dash_items: ["Task List", "Calendar","Reminder List"]}, {id: "87654321", name: "Groceries & Coupons", dash_items: ["List", "Reminder List", "Images"]}, {id: "11223344", name: "Mom's Work Schedule", dash_items: ["Calendar", "Reminder List"]}, {id: "55667788", name: "Dad's Work Schedule", dash_items: ["Calendar", "Reminder List"]}]);
-
-    // navigation.setOptions({
-    //     title: USER_HOUSEHOLD.label
-    // }, []);
-
-    useEffect(() => {
-        navigation.setOptions({
-            title: USER_HOUSEHOLD.label
-        });
-    }, []);
     
     const listHeaderText = {
         color: colors.text,
         fontWeight: 'bold',
         fontSize: 24,
         marginLeft: 20,
-        marginTop: 30
+        marginTop: 30,
     };
     const dateStrStyle = {
         color: colors.text,
@@ -80,7 +74,7 @@ const Home = ({ navigation }) => {
         color: colors.text,
         fontWeight: 'bold',
         fontSize: 14,
-        padding: 5
+        padding: 5,
     };
     const cardStyle = {
         marginRight: 20,
@@ -91,7 +85,7 @@ const Home = ({ navigation }) => {
         backgroundColor: colors.background,
         borderColor: colors.background,
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
     };
 
     const summaryContainer = {
@@ -115,6 +109,12 @@ const Home = ({ navigation }) => {
             setDateTimeUpdate(moment().format("dddd, MMMM Do YYYY, h:mm a"))
         })
     });
+
+    useEffect(() => {
+        navigation.setOptions({
+            title: USER_HOUSEHOLD.label
+        });
+    }, []);
     
     generateEncouragementStr();
 

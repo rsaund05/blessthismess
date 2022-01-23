@@ -33,7 +33,7 @@ const buildComponentList = (components, calendarStyle) => {
     return componentArray;
 };
 
-const Dashboard = ({ navigaton, route }) => {
+const DashboardScreen = ({ navigaton, route }) => {
     const {colors} = useTheme();
     const calendarStyle = {
         borderRadius: 10,
@@ -59,4 +59,4 @@ const Dashboard = ({ navigaton, route }) => {
     );
 };
 
-export default Dashboard;
+export default DashboardScreen;
