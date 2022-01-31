@@ -19,6 +19,7 @@ to share dashboards and contribute to households with other users.
 
 ###### How to Build
 - Run `npm install --legacy-peer-deps` inside the root directory `/blessthismess`
-- run `npm start` (or `expo start`) inside same directory to initialize the expo developer tools in browser and start the bundler.
+- Run `npm start` (or `expo start`) inside same directory to initialize the expo developer tools in browser and start the bundler.
+- If you are running the app on a mobile platform, you will need to have the Expo Go app installed on the target device. This can be found on the iOS App Store and Google Play Store 
 - From the bundler, you can choose what platform to run the app on. Note, my primary platform of interest is iOS, so some things may not work quite as intended on android/web browsers. That is not to say that I am not working on them at all, just that they aren't my hightest priority at the moment.
 - Note: If for whatever reason the app fails to build/bundle, try deleting /node_modules and package-lock.json and running npm install --legacy-peer-deps
