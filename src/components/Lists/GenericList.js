@@ -1,11 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView, FlatList, TouchableOpacity, Platform } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, FlatList, TouchableOpacity, Platform, Image } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useTheme } from '@react-navigation/native';
 import HorizontalButton from '../Buttons/HorizontalButton';
 import OptionsMenu from "react-native-option-menu";
+import icon from "../../../assets/icon.png";
 
-const GenericList = ({list, shadowedActionButtons}) => {
+
+const GenericList = ({list}) => {
     const {colors} = useTheme();
     const listHeaderText = {
         color: colors.text,
@@ -81,6 +83,34 @@ const GenericList = ({list, shadowedActionButtons}) => {
     const calendarContainer = {
         
     }
+
+    const optionsButton = (
+        <TouchableOpacity 
+            style={[actionButtonStyle, {marginRight: 2}]}
+            onPress={() => console.log("listoptions")}
+        >
+            <MaterialCommunityIcons 
+                name={"dots-horizontal-circle-outline"}
+                color={colors.primary}
+                size={25}
+            />
+        </TouchableOpacity>
+    );//plus-circle-outline
+    
+    const editItem = () => {
+
+    };
+    const deleteItem = () => {
+
+    };
+    
+    const tempComponenet = (<MaterialCommunityIcons 
+        name={"dots-horizontal-circle-outline"}
+        color={colors.primary}
+        style={[actionButtonStyle, {marginRight: 2}]}
+        size={25}
+    />)
+
     return(
         <View style={listContainerStyle}>
             <FlatList
@@ -92,28 +122,13 @@ const GenericList = ({list, shadowedActionButtons}) => {
                             <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
                                 <Text style={listHeaderText}>LIST_TITLE</Text>
                                 <View style={{flexDirection: 'row'}}>
-                                    <TouchableOpacity 
-                                        style={[actionButtonStyle, {marginRight: 2}, shadowedActionButtons ? actionButtonShadow : {}]}
-                                        onPress={() => console.log("listoptions")}
-                                    >
-                                        <MaterialCommunityIcons 
-                                            name={"plus-circle-outline"}
-                                            color={colors.primary}
-                                            size={25}
-                                        />
-                                    </TouchableOpacity>
-                                    
-                                        <TouchableOpacity 
-                                            style={[actionButtonStyle, shadowedActionButtons ? actionButtonShadow : {}]}
-                                            onPress={() => console.log("listitem_added")}
-                                        >
-                                            <MaterialCommunityIcons 
-                                                name={"dots-horizontal-circle-outline"}
-                                                color={colors.primary}
-                                                size={25}
-                                            />
-                                        </TouchableOpacity>
-                                    
+
+                                    <OptionsMenu 
+                                        customButton={tempComponenet}
+                                        destructiveIndex={1}
+                                        options={["Edit", "Delete", "Cancel"]}
+                                        actions={[editItem, deleteItem]}
+                                    />
                                 </View>
                             </View>
                         );
