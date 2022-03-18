@@ -16,6 +16,7 @@ to share dashboards and contribute to households with other users.
 ###### Some Notes - *As of March 2022*
 - The app is not yet fully functional, the lastest build only uses predefined user data for demo and testing purposes
 - Account creation and management is also nonfunctional at the moment
+- The app has only been tested on iOS/Android, while I plan on verifying functionality on web browsers I have not yet done so
 - I am in the process of properly defining the data model, so data points may change over time
 
 ###### How to Build
