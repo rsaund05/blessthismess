@@ -4,7 +4,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { useTheme } from '@react-navigation/native';
 import HorizontalButton from '../Buttons/HorizontalButton';
 import OptionsMenu from "react-native-option-menu";
-import icon from "../../../assets/icon.png";
+import CheckBoxList from 'rn-checkbox-list';
 
 
 const GenericList = ({list}) => {

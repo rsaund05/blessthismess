@@ -11,7 +11,7 @@ images.
 </p>
 
 The app does not require an account to be registered, you can use it entirely offline if you choose. However, you will need an account 
-to share dashboards and contribute to households with other users.
+to share dashboards and contribute to households with other users in the future.
 
 ###### Some Notes - *As of January 2022*
 - The app is not yet fully functional, the lastest build only uses predefined user data for demo and testing purposes
